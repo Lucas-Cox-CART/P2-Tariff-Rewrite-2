@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tariff Rewrite</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Goblin+One&family=Nanum+Myeongjo&family=Tilt+Prism&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <h1>Tariff!</h1>
+            <p><em>Monopoly... with taxes.</em></p>
+        </nav>
+        <div class="headImage">
+            <div type="button" onclick="gotoSettings()"></div>
+        </div>
+    </header>
+    <main id="main">
+        <section class="description">
+            <div class="shiftLeft">
+                <h3>Base Monopoly Rules</h3>
+                <p></p>
+            </div>
+            <div class="shiftRight">
+                <h3>Tax Rules</h3>
+                <p></p>
+            </div>
+            <div class="shiftLeft">
+                <h3>Election Rules</h3>
+                <p></p>
+            </div>
+            <div class="shiftRight">
+                <h3>World Event Rules</h3>
+                <p></p>
+            </div>
+            <div class="shiftLeft">
+                <h3>Miscellaneous Rules</h3>
+                <p></p>
+            </div>
+        </section>
+    </main>
+    <section id="settingsPage">
+        <h2>Settings</h2>
+        <article>
+            <div>
+                <p>Difficulty:</p>
+                <select id="selectDifficulty">
+                    <option value="1">Easy</option>
+                    <option value="2">Normal</option>
+                    <option value="3">Hard</option>
+                    <option value="4">Custom</option>
+                </select>
+            </div>
+            <div>
+                <p>Player Count:</p>
+                <select id="PCSelect">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+            </div>
+            <div>
+                <p>Budget:</p>
+                <input type="number" id="initialBudget">
+            </div>
+            <div>
+                <p>Starting Tax:</p>
+                <input type="number" id="initialTax">
+            </div>
+            <div>
+                <p>Screenshare:</p>
+                <input type="checkbox" id="check" class="toggle">
+                <label for="check">Checked?</label>
+            </div>
+            <div>
+                <button onclick="startGame()">Start Game!</button>
+            </div>
+        </article>
+    </section>
+
+    <section id="mainGame">
+        <section class="playerInformation">
+            <article class="top">
+                <div id="playerIconBar">
+
+                </div>
+                <div id="currentPlayerBar">
+
+                </div>
+            </article>
+            <article class="mid">
+                <span class="mid-left">
+                    <div id="ownedProperties">
+
+                    </div>
+                    <div id="playerBalance">
+
+                    </div>
+                </span>
+                <span class="mid-right">
+                    <div id="chanceCards">
+
+                    </div>
+                    <div id="communityCards">
+
+                    </div>
+                    <div id="diceBar">
+                        <div id="diceButton">
+                            <p>Click to roll dice.</p>
+                        </div>
+                        <div class="diceLogoBar">
+                            <div id="diceOne"></div>
+                            <div id="diceTwo"></div>
+                        </div>
+                    </div>
+                </span>
+            </article>
+            <article class="low">
+                <span id="eventBar">
+
+                </span>
+                <span id="presidentBar">
+
+                </span>
+            </article>
+        </section>
+        <section class="gameBoard">
+            <article class="topCells">
+                <div id="cell0">GO</div>
+                <div id="cell1"></div>
+                <div id="cell2"></div>
+                <div id="cell3"></div>
+                <div id="cell4"></div>
+                <div id="cell5"></div>
+                <div id="cell6"></div>
+                <div id="cell7"></div>
+                <div id="cell8"></div>
+                <div id="cell9"></div>
+                <div id="cell10">Jail</div>
+            </article>
+            <article class="leftCells">
+                <div id="cell31"></div>
+                <div id="cell32"></div>
+                <div id="cell33"></div>
+                <div id="cell34"></div>
+                <div id="cell35"></div>
+                <div id="cell36"></div>
+                <div id="cell37"></div>
+                <div id="cell38"></div>
+                <div id="cell39"></div>
+            </article>
+            <img src="">
+            <article class="rightCells">
+                <div id="cell11"></div>
+                <div id="cell12"></div>
+                <div id="cell13"></div>
+                <div id="cell14"></div>
+                <div id="cell15"></div>
+                <div id="cell16"></div>
+                <div id="cell17"></div>
+                <div id="cell18"></div>
+                <div id="cell19"></div>
+            </article>
+            <article class="bottomCells">
+                <div id="cell20">Bank Loan</div>
+                <div id="cell21"></div>
+                <div id="cell22"></div>
+                <div id="cell23"></div>
+                <div id="cell24"></div>
+                <div id="cell25"></div>
+                <div id="cell26"></div>
+                <div id="cell27"></div>
+                <div id="cell28"></div>
+                <div id="cell29"></div>
+                <div id="cell30">Go To Jail</div>
+            </article>
+        </section>
+    </section>
+    <footer id="footer">
+        <address>
+            <address>
+                Written by <em><a href="mailto:lucas.cox.edu@gmail.com">Lucas Cox</a></em>, <em><a href="mailto:mason.peters@student.cart.org">Mason Peters</a></em>, <em><a href="mailto:mark.yang@student.cart.org">Mark Yang</a></em>.
+                Students of <a href="https://cart.org">CART</a>
+                2555 Clovis Ave, Fresno CA
+                USA
+            </address>
+            <p>Copyright 2023 by Web Application Development Team. All Rights Reserved.</p>
+        </address>
+    </footer>
+    <script src="scripts/mainpage.js"></script>
+    <script src="scripts/settings.js"></script>
+    <script src="scripts/player.js"></script>
+    <script src="scripts/gameboard.js"></script>
+    <script src="scripts/potus.js"></script>
+</body>
+</html>
