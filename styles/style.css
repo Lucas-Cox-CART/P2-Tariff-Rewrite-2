@@ -7,26 +7,43 @@ main {
     background-color: black;
 }
 
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 7vh;
+    width: 80%;
+    padding: 0 10% 0 10%;
+    background-color: black;
+    color: white;
+}
+
 nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 7vh;
+    height: 13vh;
 }
 
 nav > h1 {
     font-family: 'Tilt Prism', cursive;
-    font-size: 4rem;
+    font-size: 7rem;
     font-weight: lighter;
     color: white;
+    margin: -1.00%;
 }
 
 nav > p {
     font-family: 'Times New Roman', Times, serif;
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     color: white;
+}
+
+nav > p > em > span {
+    color: rgba(255, 0, 30, 0.7);
 }
 
 header {
@@ -34,6 +51,9 @@ header {
 }
 
 .headImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-image: url(../images/LOGOS/TariffLogoShaded.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -47,30 +67,53 @@ header {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 100vh;
+    height: auto;
     width: 80%;
     background-color: black;
-    margin: 0 10% 0 10%;
+    padding: 5% 10% 0 10%;
+    box-shadow: 0px 0px 70px 60px black;
 }
 
 .shiftLeft {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     align-self: self-start;
     background-color: white;
-    height: 20vh;
-    width: 45%;
+    height: auto;
+    width: 45.00%;
+    border: 3px solid gray;
+    border-radius: 20px;
+    padding: 35px;
+    margin: 2.50%;
 }
 
 .shiftRight {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     align-self: self-end;
     background-color: white;
-    height: 20vh;
+    height: auto;
     width: 45%;
+    border: 3px solid gray;
+    border-radius: 20px;
+    padding: 35px;
+    margin: 2.50%;
+}
+
+.shiftLeft h3,
+.shiftRight h3 {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 3rem;
+}
+
+.shiftLeft p,
+.shiftRight p {
+    font-family: 'Nanum Myeongjo', cursive;
+    font-size: 1.5rem;
 }
 
 #settingsPage {
@@ -82,15 +125,111 @@ header {
 }
 
 div[onclick="gotoSettings()"] {
-    height: 20px;
-    width: 20px;
-    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-family: 'Goblin One', cursive;
+    height: 20%;
+    width: 20%;
+    border: 3px solid black;
+    border-radius: 20px;
+    background-image: linear-gradient(90deg, rgba(170, 170, 170, 0.8), rgba(48, 48, 48, 0.8));
+}
+
+div[onclick="gotoSettings()"]:active {
+    background-image: linear-gradient(180deg, rgba(170, 170, 170, 0.8), rgba(48, 48, 48, 0.8));
+}
+
+#settingsPage {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 100vh;
+    padding: 0 15% 0 15%;
+    background-color: white;
+    color: black;
+}
+
+#settingsPage * {
+    margin: 10px;
+}
+
+#settingsPage::selection,
+#settingsPage *::selection {
+    background-color: transparent;
+}
+
+#settingsPage > h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 7vh;
+    font-family: 'Tilt Prism', cursive;
+    font-size: 7rem;
+    font-weight: lighter;
+    color: black;
+}
+
+#settingsPage > article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 70vh;
+    border: 4px solid black;
+    border-radius: 20px;
+    background-image: linear-gradient(180deg, rgba(170, 170, 170, 0.8), rgba(48, 48, 48, 0.8));
+}
+
+#settingsPage > article div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 90%;
+}
+
+#settingsPage > article div p,
+#settingsPage > article div label {
+    font-size: 3rem;
+    font-family: 'Nanum Myeongjo', cursive;
+    width: 50%;
+    height: 50%;
+    text-align: center;
+}
+
+#settingsPage > article div *:not(p, label, button) {
+    width: 50%;
+    height: 30%;
+    font-family: 'Black Han Sans', sans-serif;
+    text-align: center;
+}
+
+#settingsPage > article > div > span {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 100%;
+    margin: 0 100px 0 0;
+}
+
+#settingsPage > article > div > span div {
+    height: 100%;
+    width: 100%;
 }
 
 button[onclick="startGame()"] {
-    height: 20px;
-    width: 20px;
-    background-color: gray;
+    width: 70%;
+    height: 60%;
+    font-family: 'Black Han Sans', sans-serif;
+    border: 3px solid black;
+    border-radius: 20px;
+    background-image: linear-gradient(90deg, rgba(170, 170, 170, 0.8), rgba(48, 48, 48, 0.8));
 }
 
 .gameBoard {
@@ -226,7 +365,7 @@ button[onclick="startGame()"] {
     width: 90%;
 }
 
-#diceButton {
+#Miscellaneous {
     height: 100%;
     width: 40%;
     border: 3px goldenrod solid;
@@ -257,6 +396,11 @@ button[onclick="startGame()"] {
     border: 3px goldenrod solid;
     border-radius: 20px;
     background-image: linear-gradient(90deg, rgba(218, 165, 32, 0.8), rgba(247, 255, 4, 0.8))
+}
+
+#diceOne::selection,
+#diceTwo::selection {
+    background-color: transparent;
 }
 
 .low {
@@ -317,6 +461,14 @@ button[onclick="startGame()"] {
     flex-direction: column-reverse;
 }
 
+img[src="images/LOGOS/TariffLogoShaded.png"] {
+    rotate: 25deg;
+    width: 50%;
+    border: black 2px solid;
+    border-radius: 20px 20px 20px 20px;
+    opacity: 50%;
+}
+
 .rightCells {
     display: flex;
     flex-direction: column;
@@ -334,4 +486,82 @@ button[onclick="startGame()"] {
     height: 85px;
     width: 85px;
     border: 2px black solid;
+}
+/* Player Characters */
+.selectedCharacter {
+    border: 3px solid greenyellow;
+}
+
+.frog {
+    content: url(../images/PC-PIECES/FrogCharacter.gif);
+}
+
+.dragon {
+    content: url(../images/PC-PIECES/DragonCharacter.gif);
+}
+
+.crab {
+    content: url(../images/PC-PIECES/HermCrabCharacter.gif);
+}
+
+/* Dice */
+.diceOne {
+    content: url(../images/DICE-LOGO/DiceOne.png);
+}
+
+.diceTwo {
+    content: url(../images/DICE-LOGO/DiceTwo.png);
+}
+
+.diceThree {
+    content: url(../images/DICE-LOGO/DiceThree.png);
+}
+
+.diceFour {
+    content: url(../images/DICE-LOGO/DiceFour.png);
+}
+
+.diceFive {
+    content: url(../images/DICE-LOGO/DiceFive.png);
+}
+
+.diceSix {
+    content: url(../images/DICE-LOGO/DiceSix.png);
+}
+
+.diceRare {
+    content: url(../images/DICE-LOGO/DiceRare.png);
+}
+
+/* Presidents */
+.kirk {
+    content: url(../images/POTUS/ColbyK.jpg);
+}
+
+.olsen {
+    content: url(../images/POTUS/ColbyO.jpg);
+}
+
+.ethan {
+    content: url(../images/POTUS/Ethan.jpg);
+}
+
+.pettit {
+    content: url(../images/POTUS/JustusP.jpg);
+}
+
+.cox {
+    content: url(../images/POTUS/LucasC.jpg);
+}
+
+.peters {
+    content: url(../images/POTUS/MasonP.jpg);
+}
+
+.ziow {
+    content: url(../images/POTUS/PaulZ.jpg);
+}
+
+.ghosoph {
+    content: url(../images/POTUS/ZachG.jpg);
 }

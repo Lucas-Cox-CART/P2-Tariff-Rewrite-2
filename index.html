@@ -14,34 +14,46 @@
 <body>
     <header id="header">
         <nav>
-            <h1>Tariff!</h1>
-            <p><em>Monopoly... with taxes.</em></p>
+            <h1>~~ Tariff!  ~~</h1>
+            <p><em>Monopoly... with <span class="annoying">taxes.</span></em></p>
         </nav>
         <div class="headImage">
-            <div type="button" onclick="gotoSettings()"></div>
+            <div type="button" onclick="gotoSettings()">Play!</div>
         </div>
     </header>
     <main id="main">
         <section class="description">
             <div class="shiftLeft">
                 <h3>Base Monopoly Rules</h3>
-                <p></p>
+                <p>
+                    To start, all players roll 2 dice. The highest player goes first. Players take turns by rolling the dice, and moving the spaces summed up on the two dice. Players may choose to purchase a plot if they land on an un-owned one, or must take a chance card or community chest card if they land on it. 
+                    Other special plots will have their rules displayed. The player wins when all other players have gone bankrupt. If you would like exceptional detail into the base Monopoly rules <a href="https://www.ultraboardgames.com/monopoly/game-rules.php">click here</a>.
+                </p>
             </div>
             <div class="shiftRight">
                 <h3>Tax Rules</h3>
-                <p></p>
+                <p>
+                    Whenever a player is purchasing land, houses, hotels, etc, taxes must be paid. The tax by default is what is selected in the settings. However, presidents can alter the tax amount. World Events can also change the current taxes.
+                </p>
             </div>
             <div class="shiftLeft">
                 <h3>Election Rules</h3>
-                <p></p>
+                <p>
+                    As part of our special modifications, we have decided to add presidential elections to the game. 
+                    An election occurs every time a player passes go for the 4th time. From there, playes are forced to vote for 1 of the 2 presidents displayed. Be careful! All presidents have special modifications that change the game immensely. Presidents also change taxes, chance cards, and community chest cards. 
+                </p>
             </div>
             <div class="shiftRight">
                 <h3>World Event Rules</h3>
-                <p></p>
+                <p>
+                    Every time a player passes go for the 2nd time, there is a chance a world event could occur. World events change large amounts of the game and can impact a player positively, or negatively depending on their current status. World event chances can also be altered by certain presidents. 
+                </p>
             </div>
             <div class="shiftLeft">
                 <h3>Miscellaneous Rules</h3>
-                <p></p>
+                <p>
+                    As for our other modifications, we decided to raise the prices of everything inside the game. We also changed the names of the properties and added our own chance and community chest cards. Players will also recieve an annual income every time the pass go that increases with each property they own. 
+                </p>
             </div>
         </section>
     </main>
@@ -72,23 +84,29 @@
             </div>
             <div>
                 <p>Budget:</p>
-                <input type="number" id="initialBudget">
+                <input type="number" id="initialBudget" value="600000">
             </div>
             <div>
                 <p>Starting Tax:</p>
-                <input type="number" id="initialTax">
+                <input type="number" id="initialTax" value="9">
             </div>
             <div>
-                <p>Screenshare:</p>
+                <label for="check">Screenshare:</label>
                 <input type="checkbox" id="check" class="toggle">
-                <label for="check">Checked?</label>
+            </div>
+            <div>
+                <p>Character:</p>
+                <span>
+                    <div id="Cselection1" type="button" class="frog"></div>
+                    <div id="Cselection2" type="button" class="dragon"></div>
+                    <div id="Cselection3" type="button" class="crab"></div>
+                </span>
             </div>
             <div>
                 <button onclick="startGame()">Start Game!</button>
             </div>
         </article>
     </section>
-
     <section id="mainGame">
         <section class="playerInformation">
             <article class="top">
@@ -110,18 +128,18 @@
                 </span>
                 <span class="mid-right">
                     <div id="chanceCards">
-
+                        
                     </div>
                     <div id="communityCards">
 
                     </div>
                     <div id="diceBar">
-                        <div id="diceButton">
-                            <p>Click to roll dice.</p>
-                        </div>
-                        <div class="diceLogoBar">
-                            <div id="diceOne"></div>
-                            <div id="diceTwo"></div>
+                        <div id="Miscellaneous" onclick="rare()"></div>
+                        <!--Remember rollDice() needs to have player turn
+                            argument passed through it.-->
+                        <div class="diceLogoBar" onclick="rollDice()">
+                            <div id="diceOne" onclick="rollDice()"></div>
+                            <div id="diceTwo" onclick="rollDice()"></div>
                         </div>
                     </div>
                 </span>
@@ -160,7 +178,7 @@
                 <div id="cell38"></div>
                 <div id="cell39"></div>
             </article>
-            <img src="">
+            <img src="images/LOGOS/TariffLogoShaded.png">
             <article class="rightCells">
                 <div id="cell11"></div>
                 <div id="cell12"></div>
@@ -188,7 +206,7 @@
         </section>
     </section>
     <footer id="footer">
-        <address>
+        <article>
             <address>
                 Written by <em><a href="mailto:lucas.cox.edu@gmail.com">Lucas Cox</a></em>, <em><a href="mailto:mason.peters@student.cart.org">Mason Peters</a></em>, <em><a href="mailto:mark.yang@student.cart.org">Mark Yang</a></em>.
                 Students of <a href="https://cart.org">CART</a>
@@ -196,12 +214,14 @@
                 USA
             </address>
             <p>Copyright 2023 by Web Application Development Team. All Rights Reserved.</p>
-        </address>
+        </article>
     </footer>
-    <script src="scripts/mainpage.js"></script>
+    <script src="scripts/index.js"></script>
     <script src="scripts/settings.js"></script>
     <script src="scripts/player.js"></script>
     <script src="scripts/gameboard.js"></script>
     <script src="scripts/potus.js"></script>
+    <script src="scripts/gamedata.js"></script>
+    <script src="scripts/dice.js"></script>
 </body>
 </html>
