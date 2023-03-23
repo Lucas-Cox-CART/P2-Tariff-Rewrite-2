@@ -10,8 +10,15 @@ function startGame() {
     playerCreation();
     settingsPage.style.display = "none";
     mainGame.style.display = "flex";
+    currentPlayerBar();
 }
+
 //Hides the settings and displays the game
+
+let playerName = document.getElementById('playerName');
+playerName.addEventListener('change', (e) => {
+    playerName.value = document.getElementById('playerName').value;
+});
 
 let startingBudget;
 //Default value for the budgets of players
@@ -35,8 +42,8 @@ difficulty = document.addEventListener("change", (e) => {
     difficulty = Math.floor(difficulty);
 });
 //Difficulty settings: 
-difficulty = document.addEventListener("change", (e) => {
-    if (difficulty == NaN || difficulty == 1) {
+document.getElementById("selectDifficulty").addEventListener("change", (e) => {
+    if (difficulty == 1) {
         document.getElementById("initialBudget").value = 600000;
         startingBudget = 600000;
         document.getElementById("initialTax").value = 9;

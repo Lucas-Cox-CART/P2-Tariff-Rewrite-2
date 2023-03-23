@@ -2,9 +2,10 @@ const propertyData = [
     //[name, rent, house1, house2, house3, house4, hotel, mortgage, pricehouse, pricehotel, purchaseCost]
     ['Go'],
     ['CandyLand', 500, 2500, 7500, 22500, 40000, 62500, 7500, 12500, 50000, 15000],
-    ['Chest'],
+    ['Chest'], //This is 2 for instance
     ['CornDog Castle', 1000, 5000, 15000, 45000, 80000, 112500, 7500, 12500, 50000, 15000],
     ['IRS Audit'],
+    ['Delta Airliner'],
     ['Mount President Face', 1500, 7500, 22500, 67500, 100000, 137500, 12500, 12500, 50000, 25000],
     ['Statue of Liberty', 1500, 7500, 22500, 67500, 100000, 137500, 12500, 12500, 50000, 25000],
     ['Chance'],

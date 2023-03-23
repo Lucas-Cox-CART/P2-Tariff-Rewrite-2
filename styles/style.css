@@ -179,7 +179,7 @@ div[onclick="gotoSettings()"]:active {
     flex-direction: column;
     align-items: center;
     width: 50%;
-    height: 70vh;
+    height: 85vh;
     border: 4px solid black;
     border-radius: 20px;
     background-image: linear-gradient(180deg, rgba(170, 170, 170, 0.8), rgba(48, 48, 48, 0.8));
@@ -280,6 +280,10 @@ button[onclick="startGame()"] {
     border: 3px solid chocolate;
     border-radius: 20px;
     background-image: linear-gradient(90deg, rgba(210, 105, 30, 0.7), rgba(255, 94, 0, 0.7));
+    font-family: 'Tilt Prism', cursive;
+    font-size: 4rem;
+    font-weight: bold;
+    color: black;
 }
 
 .mid {
@@ -494,14 +498,20 @@ img[src="images/LOGOS/TariffLogoShaded.png"] {
 
 .frog {
     content: url(../images/PC-PIECES/FrogCharacter.gif);
+    height: 100%;
+    width: auto;
 }
 
 .dragon {
     content: url(../images/PC-PIECES/DragonCharacter.gif);
+    height: 100%;
+    width: auto;
 }
 
 .crab {
     content: url(../images/PC-PIECES/HermCrabCharacter.gif);
+    height: 100%;
+    width: auto;
 }
 
 /* Dice */

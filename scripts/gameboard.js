@@ -6,7 +6,7 @@ for (let i = 0; i < 40; i++) {
 //Otherwise, this does nothing else. All the logic to determine what tile a player 
 //is on, is caluclated using the "position" value inside an object. 
 
-let properties = [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
+let properties = [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
 //Easy way to access what players have bought which buildings. 
 
 let rentedProperty;
@@ -16,7 +16,7 @@ function pP() {  // pP = player property
     if (properties[players[turnIndicator].position] == null) {
         if (players[turnIndicator].budget > propertyData[players[turnIndicator].position][10]) {
         players[turnIndicator].budget = players[turnIndicator].budget - propertyData[turnIndicator][10];
-        properties.splice(players[turnIndicator].position, 1, turnIndicator = {buildings: 0});
+        properties.splice(players[turnIndicator].position, 1, (turnIndicator.valueOf = {buildings: 0}));
         }
     } else if (properties[players[turnIndicator].position] == turnIndicator) {
         if (properties[players[turnIndicator].position].buildings < 5) {
@@ -49,4 +49,5 @@ function pP() {  // pP = player property
             players[rentedProperty].budget = players[rentedProperty].budget + propertyData[players[turnIndicator].position][7];
         }
     }
+    console.log('cornhub')
 }

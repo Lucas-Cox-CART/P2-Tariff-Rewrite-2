@@ -61,6 +61,10 @@
         <h2>Settings</h2>
         <article>
             <div>
+                <p>Playername:</p>
+                <input type="text" id="playerName" placeholder="Enter playername...">
+            </div>
+            <div>
                 <p>Difficulty:</p>
                 <select id="selectDifficulty">
                     <option value="1">Easy</option>
@@ -137,7 +141,7 @@
                         <div id="Miscellaneous" onclick="rare()"></div>
                         <!--Remember rollDice() needs to have player turn
                             argument passed through it.-->
-                        <div class="diceLogoBar" onclick="rollDice()">
+                        <div class="diceLogoBar">
                             <div id="diceOne" onclick="rollDice()"></div>
                             <div id="diceTwo" onclick="rollDice()"></div>
                         </div>
@@ -156,15 +160,36 @@
         <section class="gameBoard">
             <article class="topCells">
                 <div id="cell0">GO</div>
-                <div id="cell1"></div>
-                <div id="cell2"></div>
-                <div id="cell3"></div>
-                <div id="cell4"></div>
-                <div id="cell5"></div>
-                <div id="cell6"></div>
-                <div id="cell7"></div>
-                <div id="cell8"></div>
-                <div id="cell9"></div>
+                <div id="cell1">
+                    <div>Candy Land</div>
+                </div>
+                <div id="cell2">
+                    <p>Community Chest</p>
+                    <img src="" alt="Community Chest">
+                </div>
+                <div id="cell3">
+                    <div>Corndog Castle</div>
+                </div>
+                <div id="cell4">
+                    <p>Income Tax</p>
+                </div>
+                <div id="cell5">
+                    <p></p>
+                    <img src="" alt="Railroad">
+                </div>
+                <div id="cell6">
+                    <div>Mt. President</div>
+                </div>
+                <div id="cell7">
+                    <p>Chance</p>
+                    <img src="" alt="Chance">
+                </div>
+                <div id="cell8">
+                    <div>Statue of Liberty</div>
+                </div>
+                <div id="cell9">
+                    
+                </div>
                 <div id="cell10">Jail</div>
             </article>
             <article class="leftCells">

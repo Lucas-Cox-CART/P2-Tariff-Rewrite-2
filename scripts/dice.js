@@ -1,17 +1,18 @@
 // Remember that 'function rollDice()' needs to have an argument for player turn.
+let diceMove;
 function rollDice() {
     /* Dice Data */
+    console.log("Dice have been activated")
     let diceMath1 = Math.round(Math.random() * 6);
     let diceMath2 = Math.round(Math.random() * 6);
-    let diceMove = diceMath1 + diceMath2;
-
-
+    diceMove = diceMath1 + diceMath2;
+    playerTurnMovement();
     /* Dice Element */
     diceTimeout = setTimeout(diceLogoChanger, 5);
     let diceOne = document.getElementById('diceOne');
     let diceTwo = document.getElementById('diceTwo');
-    diceOne.classList.remove('diceOne', 'diceTwo', 'diceThree', 'diceFour', 'diceFive', 'diceSix');
-    diceTwo.classList.remove('diceOne', 'diceTwo', 'diceThree', 'diceFour', 'diceFive', 'diceSix');
+    diceOne.classList.remove('diceOne', 'diceTwo', 'diceThree', 'diceFour', 'diceFive', 'diceSix', 'diceRare');
+    diceTwo.classList.remove('diceOne', 'diceTwo', 'diceThree', 'diceFour', 'diceFive', 'diceSix', 'diceRare');
 
         function diceLogoChanger() {
         switch(diceMath1) {
