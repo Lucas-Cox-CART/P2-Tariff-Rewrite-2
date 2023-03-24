@@ -448,6 +448,11 @@ button[onclick="startGame(errorBoolean)"] {
     margin: 25px 25px 0 0;
 }
 /* Gameboard */
+#playerBalance {
+    font-size: 32px;
+    font-family: 'Black Han Sans', sans-serif;
+}
+
 .topCells,
 .leftCells,
 .rightCells,
@@ -472,6 +477,8 @@ img[src="images/LOGOS/TariffLogoShaded.png"] {
     border: black 2px solid;
     border-radius: 20px 20px 20px 20px;
     opacity: 50%;
+    height: 30%;
+    align-self: center;
 }
 
 .rightCells {
@@ -483,6 +490,17 @@ img[src="images/LOGOS/TariffLogoShaded.png"] {
     display: flex;
     flex-direction: row-reverse;
 }
+
+#gameBoard div > div {
+    position: absolute;
+}
+
+#gameBoard div > img {
+    position: absolute;
+    opacity: 40%; 
+    /* Currently enabling opacity so I can see frerg behind images. */
+}
+
 
 .topCells div,
 .leftCells div,
@@ -549,6 +567,55 @@ img[src="images/LOGOS/TariffLogoShaded.png"] {
 #gameBoard article div img {
     width: 50px;
     height: 50px;
+}
+
+/* AskProperty, BuyProperty */
+.propertyAsk {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    background-color: white;
+    border: 2px black solid;
+    border-radius: 20px;
+    left: 10%;
+    top: 12%;
+}
+
+.propertyAsk *::selection {
+    background-color: transparent;
+}
+
+.propertyName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cornflowerblue;
+    font-family: 'Goblin One', cursive;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    height: 10vh;
+    width: 100%;
+}
+
+.propertyPrice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Black Han Sans', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    width: 50%;
+    height: 10%;
+}
+
+.testButton {
+    width: 50%;
+    height: 10%;
 }
 
 /* Player Characters */

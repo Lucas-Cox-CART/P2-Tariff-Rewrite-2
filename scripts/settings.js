@@ -25,7 +25,8 @@ function startGame(errorBoolean) {
         settingsPage.style.display = "none";
         mainGame.style.display = "flex";
         playerCreation();
-        currentPlayerBar();   
+        currentPlayerBar();
+        playerBalanceBar();
     }
 }
 
