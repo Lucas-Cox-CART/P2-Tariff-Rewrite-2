@@ -8,6 +8,9 @@ function rollDice() {
     diceMath1 = Math.round(Math.random() * 6);
     diceMath2 = Math.round(Math.random() * 6);
     diceMove = diceMath1 + diceMath2;
+    if (diceMath1 == diceMath2) {
+        rollDiceTimeout = setTimeout(rollDice, 0);
+    }
     playerTurnMovement();
     /* Dice Element */
     diceTimeout = setTimeout(diceLogoChanger, 5);
@@ -15,7 +18,6 @@ function rollDice() {
     let diceTwo = document.getElementById('diceTwo');
     diceOne.classList.remove('diceOne', 'diceTwo', 'diceThree', 'diceFour', 'diceFive', 'diceSix', 'diceRare');
     diceTwo.classList.remove('diceOne', 'diceTwo', 'diceThree', 'diceFour', 'diceFive', 'diceSix', 'diceRare');
-
         function diceLogoChanger() {
         switch(diceMath1) {
             case 1:
@@ -37,7 +39,6 @@ function rollDice() {
                 diceOne.classList.add('diceSix');
                 break;
         }
-
         switch(diceMath2) {
             case 1:
                 diceTwo.classList.add('diceOne');
