@@ -88,11 +88,11 @@
             </div>
             <div>
                 <p>Budget:</p>
-                <input type="number" id="initialBudget" value="600000">
+                <input min="0" max="10000000" type="number" id="initialBudget" value="600000">
             </div>
             <div>
                 <p>Starting Tax:</p>
-                <input type="number" id="initialTax" value="9">
+                <input min="0" max="50" type="number" id="initialTax" value="9">
             </div>
             <div>
                 <label for="check">Screenshare:</label>
@@ -106,9 +106,9 @@
                     <div id="Cselection3" type="button" class="crab"></div>
                 </span>
             </div>
-            <div>
-                <button onclick="startGame()">Start Game!</button>
-            </div>
+                <div>
+                    <button onclick="startGame(errorBoolean)">Start Game!</button>
+                </div>
         </article>
     </section>
     <section id="mainGame">

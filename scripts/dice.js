@@ -1,10 +1,12 @@
 // Remember that 'function rollDice()' needs to have an argument for player turn.
 let diceMove;
+let diceMath1;
+let diceMath2;
 function rollDice() {
     /* Dice Data */
     console.log("Dice have been activated")
-    let diceMath1 = Math.round(Math.random() * 6);
-    let diceMath2 = Math.round(Math.random() * 6);
+    diceMath1 = Math.round(Math.random() * 6);
+    diceMath2 = Math.round(Math.random() * 6);
     diceMove = diceMath1 + diceMath2;
     playerTurnMovement();
     /* Dice Element */

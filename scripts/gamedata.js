@@ -81,3 +81,7 @@ const worldEvents = [
     ["Technological Revolution", "A revolutionary new invention was just made! One player dominated the market and nearly doubled their income! Every other player wasted valuable resources and lost 20% of their wealth."],
 ]
 //Contains all information for World Events
+
+let worldEventCooldown = false;
+let worldEvent = null;
+let president = null;

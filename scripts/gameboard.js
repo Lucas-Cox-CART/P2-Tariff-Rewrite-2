@@ -49,5 +49,5 @@ function pP() {  // pP = player property
             players[rentedProperty].budget = players[rentedProperty].budget + propertyData[players[turnIndicator].position][7];
         }
     }
-    console.log('cornhub')
+    console.log('cornhub');
 }

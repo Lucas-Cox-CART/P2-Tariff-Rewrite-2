@@ -41,6 +41,26 @@ function playerCreation() {
 
 function playerTurnMovement() { //This is being called in "dice.js" line 9.
     // player position, data
+    if (players[turnIndicator].doubles == 3) {
+        //If the player has rolled doubles 3 times in a row
+        players[turnIndicator].jailed = true;
+        cell[players[turnIndicator].position].removeChild(playerIcon);
+        cell[10].appendChild(playerIcon);
+        players[turnIndicator].position = 10; //This is jail
+        return;
+    } 
+
+    if (players[turnIndicator].jailed == true) {
+        if (diceMath1 == diceMath2) {
+            //If the player rolled doubles inside jail
+            cell[players[turnIndicator].position].removeChild(playerIcon);
+            cell[(players[turnIndicator].position + diceMove) % 40].appendChild(playerIcon);
+            players[turnIndicator].position = (players[turnIndicator].position + diceMove) % 40; 
+        } else {
+            players[turnIndicator].playerPosition = 10; 
+        }
+    }
+
     cell[players[turnIndicator].position].removeChild(playerIcon);
     console.log('Player position is ' + players[turnIndicator].position);
     console.log(`the dice say ${diceMove}`);
@@ -54,7 +74,7 @@ function playerTurnMovement() { //This is being called in "dice.js" line 9.
 function checkPlayerCurrentTile() {
     
     if (players[turnIndicator].position != 2, 17, 33, 8, 22, 36, 5, 15, 25, 35, 4, 12, 28, 38) { //Add all the tiles that are not property ones.
-        pP()
+        pP() //Promps the player to buy a property, add buildings, or pay rent.
     } else if (players[turnIndicator].position = 2, 17, 33) { //Chest cards
         
     } else if (players[turnIndicator].position = 8, 22, 36) { //Chance cards
@@ -64,6 +84,43 @@ function checkPlayerCurrentTile() {
     } else if (players[turnIndicator].position = 4, 12, 28, 38) {//Extra tiles
 
     } 
+
+    if (diceMath1 == diceMath2) {
+        players[turnIndicator].doubles = players[turnIndicator].doubles + 1;
+        //If the player rolled doubles
+        playerTurnMovement();
+        return;
+    }
+
+    //Does any extra logical stuff at the end of a player's turn.
+    endPlayerCurrentTurn();
+}
+
+function endPlayerCurrentTurn(){
+    if (diceMath1 != diceMath2) {
+        players[turnIndicator].doubles = 0;
+    }
+    players[turnIndicator].goCounter = players[turnIndicator].goCounter + 1;
+    //Checks any logistics behind the go counter, such as W events or elections
+    goCounterChecker();
+    turnIndicator = turnIndicator + 1;
+    if (turnIndicator == PCSelect.value) {
+        turnIndicator = 0;
+    }
+}
+
+function goCounterChecker() {//triggers goCounter-based events
+    if (players[turnIndicator].goCounter == 2) {
+        if (worldEventCooldown = false) {
+            //trigger worldly events
+        }
+    } else if (players[turnIndicator].goCounter == 4) {
+        for (let player of players) {  
+            //trigger presidential elections
+            player.goCounter = 0;
+            player.position = 0;
+        }
+    } 
 }
 
 function currentPlayerBar() {
@@ -72,5 +129,5 @@ function currentPlayerBar() {
         let currentPlayerBar = document.getElementById('currentPlayerBar');
         currentPlayerBar.style.fontSize = (4 - (playerName.textContent.length / 10));
         console.log(currentPlayerBar.value);
-        currentPlayerBar.innerText = playerName.value + "'s" + " " + "Turn";
+        currentPlayerBar.innerText = playerName.value + "'s Turn";
 }

@@ -113,7 +113,8 @@ header {
 .shiftLeft p,
 .shiftRight p {
     font-family: 'Nanum Myeongjo', cursive;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    line-height: 30px;
 }
 
 #settingsPage {
@@ -223,7 +224,7 @@ div[onclick="gotoSettings()"]:active {
     width: 100%;
 }
 
-button[onclick="startGame()"] {
+button[onclick="startGame(errorBoolean)"] {
     width: 70%;
     height: 60%;
     font-family: 'Black Han Sans', sans-serif;
