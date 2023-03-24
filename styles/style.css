@@ -232,13 +232,13 @@ button[onclick="startGame()"] {
     background-image: linear-gradient(90deg, rgba(170, 170, 170, 0.8), rgba(48, 48, 48, 0.8));
 }
 
-.gameBoard {
+/* #gameBoard {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100vh;
-}
+} */
 
 .playerInformation {
     display: flex;
@@ -438,7 +438,7 @@ button[onclick="startGame()"] {
     background-image: linear-gradient(90deg, rgba(127, 255, 0, 0.8), rgba(0, 255, 136, 0.8));
 }
 
-.gameBoard {
+#gameBoard {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -446,7 +446,7 @@ button[onclick="startGame()"] {
     height: 970px;
     margin: 25px 25px 0 0;
 }
-
+/* Gameboard */
 .topCells,
 .leftCells,
 .rightCells,
@@ -491,6 +491,65 @@ img[src="images/LOGOS/TariffLogoShaded.png"] {
     width: 85px;
     border: 2px black solid;
 }
+
+#cell1,
+#cell3 {
+    background-color: brown;
+}
+
+#cell6,
+#cell8,
+#cell9 {
+    background-color: lightblue;
+}
+
+#cell11,
+#cell13,
+#cell14 {
+    background-color: rebeccapurple;
+}
+
+#cell16,
+#cell18,
+#cell19 {
+    background-color: orange;
+}
+
+#cell21,
+#cell23,
+#cell24 {
+    background-color: red;
+}
+
+#cell26,
+#cell27,
+#cell29 {
+    background-color: yellow;
+}
+
+#cell31,
+#cell32,
+#cell34 {
+    background-color: greenyellow;
+}
+
+#cell37,
+#cell39 {
+    background-color: cornflowerblue;
+}
+
+#gameBoard article div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#gameBoard article div img {
+    width: 50px;
+    height: 50px;
+}
+
 /* Player Characters */
 .selectedCharacter {
     border: 3px solid greenyellow;
