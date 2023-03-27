@@ -15,11 +15,14 @@ let rentedProperty;
 function pP() {  // pP = player property (If the player lands on property)
     if (properties[players[turnIndicator].position] == null) {
         //If the property is un-owned the player will have an option to buy it
-        if (players[turnIndicator].budget > propertyData[players[turnIndicator].position][10]) {
-        players[turnIndicator].budget = players[turnIndicator].budget - propertyData[turnIndicator][10];
-        properties.splice(players[turnIndicator].position, 1, (turnIndicator.valueOf = {buildings: 0}));
-        players[turnIndicator].property.push (propertyData[players[turnIndicator].position][0])
-        }
+        propertyName.innerText = propertyData[players[turnIndicator].position][0];
+        propertyPrice.innerText = propertyData[players[turnIndicator].position][10];
+        askProperty();
+        // if (players[turnIndicator].budget > propertyData[players[turnIndicator].position][10]) {
+        // players[turnIndicator].budget = players[turnIndicator].budget - propertyData[turnIndicator][10];
+        // properties.splice(players[turnIndicator].position, 1, (turnIndicator.valueOf = {buildings: 0}));
+        // players[turnIndicator].property.push (propertyData[players[turnIndicator].position][0])
+        // }
     } else if (properties[players[turnIndicator].position] == turnIndicator) {
          //If the property is owned
         if (properties[players[turnIndicator].position].buildings < 5) {

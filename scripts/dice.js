@@ -11,13 +11,15 @@ function rollDice() {
     if (diceMath1 == diceMath2) {
         rollDiceTimeout = setTimeout(rollDice, 0);
     }
-    playerTurnMovement();
     /* Dice Element */
     diceTimeout = setTimeout(diceLogoChanger, 5);
     let diceOne = document.getElementById('diceOne');
     let diceTwo = document.getElementById('diceTwo');
     diceOne.classList.remove('diceOne', 'diceTwo', 'diceThree', 'diceFour', 'diceFive', 'diceSix', 'diceRare');
     diceTwo.classList.remove('diceOne', 'diceTwo', 'diceThree', 'diceFour', 'diceFive', 'diceSix', 'diceRare');
+    //Starts the player movement
+    playerTurnMovement();
+
         function diceLogoChanger() {
         switch(diceMath1) {
             case 1:

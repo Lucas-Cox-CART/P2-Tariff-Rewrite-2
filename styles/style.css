@@ -447,6 +447,11 @@ button[onclick="startGame(errorBoolean)"] {
     height: 970px;
     margin: 25px 25px 0 0;
 }
+
+#gameBoard *::selection {
+    background-color: transparent;
+}
+
 /* Gameboard */
 #playerBalance {
     font-size: 32px;
@@ -613,9 +618,91 @@ img[src="images/LOGOS/TariffLogoShaded.png"] {
     height: 10%;
 }
 
+.buttonFatherProp {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+}
+
+.propertyButtons {
+    width: 50%;
+    height: 100%;
+}
+
 .testButton {
     width: 50%;
     height: 10%;
+}
+
+/* Presidential Elections */
+
+.electionFather {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 65%;
+    height: 90%;
+    background-color: white;
+    border: 2px black solid;
+    border-radius: 20px;
+    left: 18%;
+    top: 5%;
+}
+
+.electionFather *::selection {
+    background-color: transparent;
+}
+
+.nomineeFather {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    width: 100%;
+}
+
+.descriptionFather {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+}
+
+.nominee {
+    width: 50%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.nomineeDescription {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.voteConfirm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    border-radius: 20px;
+    font-size: 2rem;
+    font-family: 'Goblin One', cursive;
+    letter-spacing: 5px;
+    background-image: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 }
 
 /* Player Characters */
@@ -695,10 +782,44 @@ img[src="images/LOGOS/TariffLogoShaded.png"] {
     content: url(../images/POTUS/MasonP.jpg);
 }
 
-.ziow {
+.ziokalski {
     content: url(../images/POTUS/PaulZ.jpg);
 }
 
 .ghosoph {
     content: url(../images/POTUS/ZachG.jpg);
+}
+
+/* Player Icons, (Each player is a slightly different color of the same icon.) */
+
+.P0 {
+    filter: hue-rotate(0deg);
+}
+
+.P1 {
+    filter: hue-rotate(45deg);
+}   
+
+.P2 {
+    filter: hue-rotate(90deg);
+}
+
+.P3 {
+    filter: hue-rotate(135deg);
+}
+
+.P4 {
+    filter: hue-rotate(180deg);
+}
+
+.P5 {
+    filter: hue-rotate(225deg);
+}
+
+.P6 {
+    filter: hue-rotate(270deg);
+}
+
+.P7 {
+    filter: hue-rotate(315deg);
 }

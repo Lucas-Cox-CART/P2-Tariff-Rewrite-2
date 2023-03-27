@@ -25,7 +25,7 @@ const propertyData = [
     ['Chance'],
     ['The Pentagon', 4500, 22500, 62500, 175000, 218750, 262500, 37500, 37500, 150000, 55000],
     ['Area51', 5000, 25000, 75000, 187500, 231250, 275000, 30000, 37500, 150000, 60000],
-    ['USS Montana']
+    ['USS Montana'],
     ['Col. Corn Lighthouse', 5500, 27500, 82500, 200000, 243800, 287500, 32500, 37500, 150000, 65000],
     ['Fredbear Family Diner', 5500, 27500, 82500, 200000, 243800, 287500, 32500, 37500, 150000, 65000],
     ['Water Works'],
@@ -78,7 +78,7 @@ const worldEvents = [
     ["Recession", "OH NOES! The economy inflated by 15%, and now all properties produce 10% less!"],
     ["Waste of an event", "Some twitter person started up a whole conspiracy where something bad was going to happen. This is stupid. Nothing bad is ever going to happen."],
     ["War", "Some genius decided war is a good idea. This is super good for you! You get +20% extra on annual income... but be careful: Taxes are up."],
-    ["Technological Revolution", "A revolutionary new invention was just made! One player dominated the market and nearly doubled their income! Every other player wasted valuable resources and lost 20% of their wealth."],
+    ["Technological Revolution", "A revolutionary new invention was just made! One player dominated the market and nearly doubled their income! Every other player wasted valuable resources and lost 20% of their wealth."]
 ]
 //Contains all information for World Events
 
