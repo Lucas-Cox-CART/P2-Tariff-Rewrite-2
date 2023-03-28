@@ -13,14 +13,15 @@ const playerIconData = [
 // cell[(players[turnIndicator].position + diceMove) % 40].appendChild(turnIcon);
 //This is what it should look like ^
 
-let playerIcon = document.createElement('span');
-playerIcon.classList.add('active', 'frog');
+let playerIcon = [document.createElement('span'), document.createElement('span'), document.createElement('span'), document.createElement('span'), document.createElement('span'), document.createElement('span'), document.createElement('span'), document.createElement('span')]
+// document.createElement('span');
 
 function playerCreation() {
     //Code below this creates the icons that appear on the top left side
     let playerBarIcon = [];
     let playerBoardIcon = [];
 
+    //Creates the players, and their statistics
     for (let i = 0; i < document.getElementById("PCSelect").value; i++) {
         players.push(player = {
             budget: startingBudget, //gives their starting budget 
@@ -30,30 +31,37 @@ function playerCreation() {
             jailCounter: 0, //counts how many turns player is in jail for
             goCounter: 0, //counts how many times player passes go
             position: 0, //Determines what tile a player is on for all logic purposes. 
+            icon: playerIcon[i],
         })
     }
     console.log(players);
 
+    //Creates the physical appearances of the characters. 
     for (let i = 0; i < PCSelect.value; i++) {
         playerBarIcon[i] = document.createElement('div');
         if (CharacterSelect1.classList.contains('selectedCharacter')) {
-            playerBarIcon[i].classList.add('frog');
-            playerIcon.classList.add('active', 'frog');      
+            playerBarIcon[i].classList.add('frog');    
+            players[i].icon.classList.add('active', 'frog', playerIconData[i]);
+            cell[0].appendChild(players[i].icon); 
         }
         if (CharacterSelect2.classList.contains('selectedCharacter')) {
             playerBarIcon[i].classList.add('dragon');
-            playerIcon.classList.add('active', 'dragon');
+            players[i].icon.classList.add('active', 'dragon', playerIconData[i]);
+            cell[0].appendChild(players[i].icon); 
         }
         if (CharacterSelect3.classList.contains('selectedCharacter')) {
             playerBarIcon[i].classList.add('crab');
-            playerIcon.classList.add('active', 'crab');
+            players[i].icon.classList.add('active', 'crab', playerIconData[i]);
+            cell[0].appendChild(players[i].icon); 
         }
 
-        cell[0].appendChild(playerIcon);
+        players[i].icon.classList.add('active', 'frog', playerIconData[i]);
+        // cell[0].appendChild(players[i].icon); 
+
         document.getElementById('playerIconBar').appendChild(playerBarIcon[i]);
         playerBoardIcon[i] = document.createElement('div');
-    }
-    //Code below creates each player and their data
+    }  
+    //Code below creates each player and their data 
 }
 
 function playerTurnMovement() { 
@@ -64,17 +72,17 @@ function playerTurnMovement() {
         //If the player is in jail
         if (diceMath1 == diceMath2) {
             //If the player rolled doubles inside jail
-            cell[players[turnIndicator].position].removeChild(playerIcon);
+            cell[players[turnIndicator].position].removeChild(players[turnIndicator].icon);
             let newPosition = cell[(players[turnIndicator].position + diceMove) % 40];
-            newPosition.appendChild(playerIcon);
+            newPosition.appendChild(players[turnIndicator].icon);
             players[turnIndicator].position = (players[turnIndicator].position + diceMove) % 40; 
             players[turnIndicator].jailCounter = 0;
             players[turnIndicator].doubles = players[turnIndicator].doubles + 1;
         } else {
             if (players[turnIndicator].jailCounter == 3) {
                 //If the player has been in jail for 3 turns, let them move regularily
-                cell[players[turnIndicator].position].removeChild(playerIcon);
-                cell[(players[turnIndicator].position + diceMove) % 40].appendChild(playerIcon);
+                cell[players[turnIndicator].position].removeChild(players[turnIndicator].icon);
+                cell[(players[turnIndicator].position + diceMove) % 40].appendChild(players[turnIndicator].icon);
                 players[turnIndicator].position + diceMove % 40; 
                 players[turnIndicator].jailCounter = 0;
                 players[turnIndicator].doubles = 0;
@@ -89,11 +97,11 @@ function playerTurnMovement() {
     } else {
         //Basic movement
 
-        if (cell[players[turnIndicator].position].contains(playerIcon)) {
+        if (cell[players[turnIndicator].position].contains(players[turnIndicator].icon)) {
             //If a cell contains a player, remove the player visually.
-            cell[players[turnIndicator].position].removeChild(playerIcon);
+            cell[players[turnIndicator].position].removeChild(players[turnIndicator].icon);
         }
-        cell[(players[turnIndicator].position + diceMove) % 40].appendChild(playerIcon);
+        cell[(players[turnIndicator].position + diceMove) % 40].appendChild(players[turnIndicator].icon);
 
         players[turnIndicator].position = (players[turnIndicator].position + diceMove) % 40;
 
@@ -112,8 +120,8 @@ function playerTurnMovement() {
     if (players[turnIndicator].doubles == 3) {
         //If the player has rolled doubles 3 times in a row, send them to jail
         players[turnIndicator].jailed = true;
-        cell[players[turnIndicator].position].removeChild(playerIcon);
-        cell[10].appendChild(playerIcon);
+        cell[players[turnIndicator].position].removeChild(players[turnIndicator].icon);
+        cell[10].appendChild(players[turnIndicator].icon);
         players[turnIndicator].position = 10; //This is jail
         return;
     } 
@@ -167,7 +175,8 @@ function goCounterChecker() {//triggers goCounter-based events
             //trigger presidential elections
             player.goCounter = 0;
             player.position = 0;
-            // console.log('feet')
+            cell[player.position].removeChild(player.icon);
+            cell[0].appendChild(player.icon)
         }
     }
     playerBalanceBar();
