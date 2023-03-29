@@ -101,8 +101,14 @@ function playerTurnMovement() {
             //If a cell contains a player, remove the player visually.
             cell[players[turnIndicator].position].removeChild(players[turnIndicator].icon);
         }
-        cell[(players[turnIndicator].position + diceMove) % 40].appendChild(players[turnIndicator].icon);
 
+        while (players[turnIndicator].position != (players[turnIndicator].position + diceMove)) {
+            console.log("While loop activated");
+            setTimeout( cell[(players[turnIndicator].position + 1) % 40].appendChild(players[turnIndicator].icon), 2000);
+            players[turnIndicator].position = players[turnIndicator].position + 1;
+        }
+
+        // cell[(players[turnIndicator].position + diceMove) % 40].appendChild(players[turnIndicator].icon);
         players[turnIndicator].position = (players[turnIndicator].position + diceMove) % 40;
 
         //Checks what tile the player is on: (property, chance, chest, etc)
@@ -129,11 +135,11 @@ function playerTurnMovement() {
 
 function checkPlayerCurrentTile() {
     if (players[turnIndicator].position != 2, 17, 33, 8, 22, 36, 5, 15, 25, 35, 4, 12, 28, 38, 30, 10, 20, 0) { //Add all the tiles that are not property ones.
-        //pP(); //Promps the player to buy a property, add buildings, or pay rent.
+        //pP(); //Prompts the player to buy a property, add buildings, or pay rent.
     } else if (players[turnIndicator].position == 2, 17, 33) { //Chest cards
-        
+        performChestCard();
     } else if (players[turnIndicator].position == 8, 22, 36) { //Chance cards
-
+        performChanceCard();
     } else if (players[turnIndicator].position == 5, 15, 25, 35) { //Transport tiles
         
     } else if (players[turnIndicator].position == 4, 12, 28, 38) { //Extra tiles
@@ -193,6 +199,8 @@ function currentPlayerBar() {
     currentPlayerBar.style.fontSize = (4 - (playerName.textContent.length / 10));
     currentPlayerBar.innerText = playerName.value + "'s Turn";
 }
+
+
 
 function playerBalanceBar() {
     let playerBalanceBar = document.getElementById('playerBalance');

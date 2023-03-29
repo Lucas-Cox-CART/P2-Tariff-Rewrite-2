@@ -5,10 +5,6 @@ let propertyName = document.createElement('h3');
 propertyName.setAttribute('class', 'propertyName');
 propertyName.innerText = propertyData[1][0];
 
-// let propertyPrice = document.createElement('p');
-// propertyPrice.setAttribute('class', 'propertyPrice');
-// propertyPrice.innerText = propertyData[1][1];
-
 let pPFather = document.createElement('span');
 pPFather.setAttribute('class', 'pPFather');
 
@@ -74,6 +70,18 @@ propertyAsk.append(propertyName, pPFather, propertyButtonFather);
 
 function askProperty() {
     mainGame.appendChild(propertyAsk);
+}
+
+let ownedPropertiesHTML = document.getElementById('ownedProperties');
+let specificPropertyOwned = document.createElement('div');
+specificPropertyOwned.classList.add('specificPropertyOwned');
+let sPOName = document.createElement('h3');
+sPOName.classList.add('sPOName');
+sPOName.innerText = propertyData[1][0];
+
+function buyProperty() {
+    mainGame.removeChild(propertyAsk);
+    ownedPropertiesHTML.appendChild(specificPropertyOwned);
 }
 
 function waiveProp() {

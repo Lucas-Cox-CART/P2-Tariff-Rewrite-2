@@ -1,11 +1,11 @@
 const propertyData = [
     //[name, rent, house1, house2, house3, house4, hotel, mortgage, pricehouse, pricehotel, purchaseCost]
-    ['Go'], 
+    ['Go'], //if players[turnindicator].position == 0
     ['Candy Land', 500, 2500, 7500, 22500, 40000, 62500, 7500, 12500, 50000, 15000],
     ['Chest'], 
     ['Corndog Castle', 1000, 5000, 15000, 45000, 80000, 112500, 7500, 12500, 50000, 15000],
     ['IRS Audit'],
-    ['Delta Airliner'],
+    ['Delta Airliner'], //This needs values, its a property, same with other 'railroads'
     ['Mount President Face', 1500, 7500, 22500, 67500, 100000, 137500, 12500, 12500, 50000, 25000],
     ['Statue of Liberty', 1500, 7500, 22500, 67500, 100000, 137500, 12500, 12500, 50000, 25000],
     ['Chance'],
@@ -16,7 +16,7 @@ const propertyData = [
     ['Mason Peters Architectural Center', 2500, 12500, 37500, 112500, 156300, 187500, 17500, 25000, 100000, 35000],
     ['Lucas Cox Medical Clinic', 3000, 15000, 45000, 125000, 175000, 225000, 20000, 25000, 100000, 40000],
     ['Sputnik Express'],
-    ["Ceasar's Palace", 3500, 17500, 50000, 137500, 187500, 237500, 22500, 25000, 100000, 45000],
+    ["Caesar's Palace", 3500, 17500, 50000, 137500, 187500, 237500, 22500, 25000, 100000, 45000],
     ['Chest'],
     ['Sun City Casino', 3500, 17500, 50000, 137500, 187500, 237500, 22500, 25000, 100000, 45000],
     ['Arroyo Grande Turtle Preservation', 4000, 20000, 55000, 150000, 200000, 250000, 25000, 25000, 100000, 50000],
@@ -41,6 +41,7 @@ const propertyData = [
     ['Luxury Tax'],
     ['Empire State Building', 12500, 50000, 150000, 350000, 425000, 500000, 50000, 50000, 200000, 100000]
 ]
+
 //Contains all information for properties
 const chanceCardData = [
     //There are 10 chance cards
@@ -64,7 +65,7 @@ const chestCardData = [
     ['setBacks', 'You sucked so bad at capitalism that now you have to move back 3 tiles. '],
     ['inheritance', 'Your uncle died. CONGRATS! You inherit 15,000 capital!'],
     ['bigTower', 'LOOK AT YOU GOING BIG!! Advance to the Empire State Building. Do not pass go.'],
-    ['opportunist', 'Advance to the closest chance card, and take a card.'],
+    ['opportunist', 'Advance to the next chance card, and take a card.'],
     ['caughtLackin', 'Timeout corner for you buster.'],
     ['leapYear', 'Advance to go and instantly gain your annual income.']
     ['tardisTax', 'The TARDIS requests tax for a disclosed reason. -20000 capital. ']
