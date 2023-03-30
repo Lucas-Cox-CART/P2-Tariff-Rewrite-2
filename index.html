@@ -124,197 +124,469 @@
             <article class="mid">
                 <span class="mid-left">
                     <div id="ownedProperties">
-                        <div>
-                            <h3>Candy Land</h3>
-                            <p></p> <!--Current Rent, Dynamic-->
-                            <p>7,500</p> <!--Mortgage Price, Static-->
-                            <p>12,500</p> <!--Price of House, Static-->
-                            <p>50,000</p> <!--Price of Hotel, Static-->
-                        </div>
-                        <div>
-                            <h3>Corndog Castle</h3>
-                            <p></p>
-                            <p>7,500</p>
-                            <p>12,500</p>
-                            <p>50,000</p>
-                        </div>
-                        <div>
-                            <h3>Delta Airliner</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Mount President Face</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Statue of Liberty</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Pearl Harbor</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Mark Yang Tech Museum</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Mason Peters Architectural Center</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Lucas Cox Medical Clinic</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Sputnik Express</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Caesar's Palace</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Sun City Casino</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Arroyo Grande Turtle Preservation</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>NORAD</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>The Pentagon</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Area 51</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>USS Montana</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Colonel Cornelious Lighthouse</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Fredbear's Family Diner</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Pious Sanctuary</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Fast Fusion</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Mary Allen Solar Field</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Robert Atomic</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>American Ambulance</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Chump Tower</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div>
-                            <h3>Empire State Building</h3>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
+                        <span id="propertyHolder">
+                            <div id="property0" class="property">
+                                <h3 id="propertyHead0">Candy Land</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent0"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property1" class="property">
+                                <h3 id="propertyHead1">Corndog Castle</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent1"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property2" class="property">
+                                <h3 id="propertyHead2">Delta Airliner</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent2"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property3" class="property">
+                                <h3 id="propertyHead3">Mount President Face</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent3"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property4" class="property">
+                                <h3 id="propertyHead4">Statue of Liberty</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent4"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property5" class="property">
+                                <h3 id="propertyHead5">Pearl Harbor</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent5"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property6" class="property">
+                                <h3 id="propertyHead6">Mark Yang Tech Museum</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent6"></span></p> 
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property7" class="property">
+                                <h3 id="propertyHead7">Mason Peters Architectural Center</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent7"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property8" class="property">
+                                <h3 id="propertyHead8">Lucas Cox Medical Clinic</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent8"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property9" class="property">
+                                <h3 id="propertyHead9">Sputnik Express</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent9"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property10" class="property">
+                                <h3 id="propertyHead10">Caesar's Palace</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent10"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property11" class="property">
+                                <h3 id="propertyHead11">Sun City Casino</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent11"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property12" class="property">
+                                <h3 id="propertyHead12">Arroyo Grande Turtle Preservation</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent12"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property13" class="property">
+                                <h3 id="propertyHead13">NORAD</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent13"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property14" class="property">
+                                <h3 id="propertyHead14">The Pentagon</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent14"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property15" class="property">
+                                <h3 id="propertyHead15">Area 51</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent15"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property16" class="property">
+                                <h3 id="propertyHead16">USS Montana</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent16"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property17" class="property">
+                                <h3 id="propertyHead17">Colonel Cornelious Lighthouse</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent17"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property18" class="property">
+                                <h3 id="propertyHead18">Fredbear's Family Diner</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent18"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property19" class="property">
+                                <h3 id="propertyHead19">Pious Sanctuary</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent19"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property20" class="property">
+                                <h3 id="propertyHead20">Fast Fusion</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent20"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property21" class="property">
+                                <h3 id="propertyHead21">Mary Allen Solar Field</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent21"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property22" class="property">
+                                <h3 id="propertyHead22">Robert Atomic</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent22"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property23" class="property">
+                                <h3 id="propertyHead23">American Ambulance</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent23"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property24" class="property">
+                                <h3 id="propertyHead24">Chump Tower</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent24"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="property25" class="property">
+                                <h3 id="propertyHead25">Empire State Building</h3>
+                                <div>
+                                    <span>
+                                        <p>Current Rent:</p>
+                                        <p>Mortgage: </p>
+                                        <p>House Price: </p>
+                                        <p>Hotel Price: </p>
+                                    </span>
+                                    <span>
+                                        <p>Ü<span id="propertyCurrentRent25"></span></p>
+                                        <p>Ü7,500</p> 
+                                        <p>Ü12,500</p> 
+                                        <p>Ü50,000</p> 
+                                    </span>
+                                </div>
+                            </div>
+                        </span>
                     </div>
                     <div id="playerBalance"></div>
                 </span>
                 <span class="mid-right">
                     <div id="chanceCards">
-                        
+                        <p class="chanceTitle" id="chanceTitle">
+                            No current chance cards active
+                        </p>
+                        <p class="chanceDesc" id="chanceDesc">
+                            
+                        </p>
                     </div>
                     <div id="communityCards">
-
+                        <p class="chestTitle" id="chestTitle">
+                            No current chest cards active
+                        </p>
+                        <p class="chestDesc" id="chestDesc"></p>
+                            
+                        </p>
                     </div>
                     <div id="diceBar">
                         <div id="Miscellaneous" onclick="askProperty()"></div>
@@ -322,8 +594,7 @@
                         <!--Remember rollDice() needs to have player turn
                             argument passed through it.-->
                         <div class="diceLogoBar">
-                            <div id="diceO
-                            ne" onclick="rollDice()"></div>
+                            <div id="diceOne" onclick="rollDice()"></div>
                             <div id="diceTwo" onclick="rollDice()"></div>
                         </div>
                     </div>

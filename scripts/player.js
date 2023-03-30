@@ -6,15 +6,7 @@ const playerIconData = [
     'P0','P1','P2','P3', 'P4', 'P5', 'P6', 'P7'
 ];
 
-//Essentially, turnIndicator = 1 is for statistics
-//turnIcon = whoever player's turn's icon it is. 
-
-// cell[players[turnIndicator].position].removeChild(turnIcon);
-// cell[(players[turnIndicator].position + diceMove) % 40].appendChild(turnIcon);
-//This is what it should look like ^
-
 let playerIcon = [document.createElement('span'), document.createElement('span'), document.createElement('span'), document.createElement('span'), document.createElement('span'), document.createElement('span'), document.createElement('span'), document.createElement('span')]
-// document.createElement('span');
 
 function playerCreation() {
     //Code below this creates the icons that appear on the top left side
@@ -24,13 +16,13 @@ function playerCreation() {
     //Creates the players, and their statistics
     for (let i = 0; i < document.getElementById("PCSelect").value; i++) {
         players.push(player = {
-            budget: startingBudget, //gives their starting budget 
-            property: [], //determines the player's amount of owned properties
-            doubles: 0, //counts the player's times they role doubles in a row
-            jailed: false, //simple boolean of if player is in jail
-            jailCounter: 0, //counts how many turns player is in jail for
-            goCounter: 0, //counts how many times player passes go
-            position: 0, //Determines what tile a player is on for all logic purposes. 
+            budget: startingBudget, //starting budget 
+            property: [], //determines the player's # of owned properties
+            doubles: 0, //Tracks if a player rolled doubles or not
+            jailed: false, //Jailed or free
+            jailCounter: 0, //How many turns a player has been in jail
+            goCounter: 0, //Checks # of times a player has been around GO.
+            position: 0, //Tile player position 
             icon: playerIcon[i],
         })
     }
@@ -55,8 +47,7 @@ function playerCreation() {
             cell[0].appendChild(players[i].icon); 
         }
 
-        players[i].icon.classList.add('active', 'frog', playerIconData[i]);
-        // cell[0].appendChild(players[i].icon); 
+        // players[i].icon.classList.add('active', 'frog', playerIconData[i]);
 
         document.getElementById('playerIconBar').appendChild(playerBarIcon[i]);
         playerBoardIcon[i] = document.createElement('div');
@@ -64,8 +55,16 @@ function playerCreation() {
     //Code below creates each player and their data 
 }
 
+let annualIncomeChecker;
+annualIncomeChecker = 0;
+//This is being called in "dice.js" line 19.
 function playerTurnMovement() { 
-    //This is being called in "dice.js" line 9.
+    if (players[turnIndicator].position < 40 && players[turnIndicator].position > 28) {
+        //Checking if the player is legible to pass go this turn
+        annualIncomeChecker = 1;
+    } else {
+        annualIncomeChecker = 0;
+    }
     // player position, data
     console.log("The dice rolled:" + diceMove);
     if (players[turnIndicator].jailed == true) {
@@ -97,32 +96,24 @@ function playerTurnMovement() {
     } else {
         //Basic movement
 
-        if (cell[players[turnIndicator].position].contains(players[turnIndicator].icon)) {
-            //If a cell contains a player, remove the player visually.
-            cell[players[turnIndicator].position].removeChild(players[turnIndicator].icon);
-        }
-
-        while (players[turnIndicator].position != (players[turnIndicator].position + diceMove)) {
-            console.log("While loop activated");
-            setTimeout( cell[(players[turnIndicator].position + 1) % 40].appendChild(players[turnIndicator].icon), 2000);
-            players[turnIndicator].position = players[turnIndicator].position + 1;
+        for (let i = 0; i < diceMove; i++) {
+            if (cell[players[turnIndicator].position].contains(players[turnIndicator].icon)) {
+                //If a cell contains a player, remove the player visually.
+                cell[players[turnIndicator].position].removeChild(players[turnIndicator].icon);
+            }
+            cell[(players[turnIndicator].position + 1) % 40].appendChild(players[turnIndicator].icon)
+            players[turnIndicator].position = (players[turnIndicator].position + 1) % 40
         }
 
         // cell[(players[turnIndicator].position + diceMove) % 40].appendChild(players[turnIndicator].icon);
-        players[turnIndicator].position = (players[turnIndicator].position + diceMove) % 40;
+        // players[turnIndicator].position = (players[turnIndicator].position + diceMove) % 40;
 
         //Checks what tile the player is on: (property, chance, chest, etc)
         checkPlayerCurrentTile();
         playerBalanceBar();
-        console.log("Player" + turnIndicator + "\'s is:" + players[turnIndicator].position);
+        console.log("Player" + turnIndicator + "\'s position is:" + players[turnIndicator].position);
     }
-
-
-    if (players[turnIndicator].position > 0 && players[turnIndicator].position < 12) { 
-        //If the player passes go (Still WIP)
-        players[turnIndicator].budget = players[turnIndicator].budget + ((50000) - (50000 * tax) + (players[turnIndicator].property['length'] * 10000))
-    }
-
+    
     if (players[turnIndicator].doubles == 3) {
         //If the player has rolled doubles 3 times in a row, send them to jail
         players[turnIndicator].jailed = true;
@@ -131,25 +122,32 @@ function playerTurnMovement() {
         players[turnIndicator].position = 10; //This is jail
         return;
     } 
+
+    if (players[turnIndicator].position > 0 && annualIncomeChecker == 1) {
+        //Checks if the player has passed go this turn
+        players[turnIndicator].budget = players[turnIndicator].budget + ((50000) - (50000 * tax) + (players[turnIndicator].property['length'] * 10000))
+        annualIncomeChecker = 0;
+    }
 }
 
 function checkPlayerCurrentTile() {
     if (players[turnIndicator].position != 2, 17, 33, 8, 22, 36, 5, 15, 25, 35, 4, 12, 28, 38, 30, 10, 20, 0) { //Add all the tiles that are not property ones.
         //pP(); //Prompts the player to buy a property, add buildings, or pay rent.
-    } else if (players[turnIndicator].position == 2, 17, 33) { //Chest cards
+    } else if (players[turnIndicator].position == 2 || players[turnIndicator].position == 17 || players[turnIndicator].position == 33) { //Chest cards
         performChestCard();
-    } else if (players[turnIndicator].position == 8, 22, 36) { //Chance cards
+    } else if (players[turnIndicator].position == 8 || players[turnIndicator].position == 22 || players[turnIndicator].position == 36) { //Chance cards
         performChanceCard();
-    } else if (players[turnIndicator].position == 5, 15, 25, 35) { //Transport tiles
+    } else if (players[turnIndicator].position == 5 || players[turnIndicator].position == 15 || players[turnIndicator].position == 25 || players[turnIndicator].position == 35) { //Transport tiles
         
-    } else if (players[turnIndicator].position == 4, 12, 28, 38) { //Extra tiles
+    } else if (players[turnIndicator].position == 4 || players[turnIndicator].position == 12 || players[turnIndicator].position == 28 || players[turnIndicator].position == 38) { //Extra tiles
 
     }
 
     if (diceMath1 == diceMath2) {
         players[turnIndicator].doubles = players[turnIndicator].doubles + 1;
         //If the player rolled doubles
-        rollDice();
+        // showDoublePopup();
+        setTimeout( rollDice(), 3000);
         return;
     }
 
@@ -189,6 +187,7 @@ function goCounterChecker() {//triggers goCounter-based events
 }
 
 function loseGame() {
+    endPlayerCurrentTurn();
     players.pop[turnIndicator];
     //Display the "UH OH YOU LOSE" thing, with like a spectate button as well.
 }
@@ -199,8 +198,6 @@ function currentPlayerBar() {
     currentPlayerBar.style.fontSize = (4 - (playerName.textContent.length / 10));
     currentPlayerBar.innerText = playerName.value + "'s Turn";
 }
-
-
 
 function playerBalanceBar() {
     let playerBalanceBar = document.getElementById('playerBalance');

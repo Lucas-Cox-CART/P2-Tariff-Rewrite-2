@@ -1,24 +1,23 @@
 // Remember that 'function rollDice()' needs to have an argument for player turn.
 let diceMove;
-let diceMath1;
-let diceMath2;
+let diceOne;
+let diceTwo;
 function rollDice() {
     /* Dice Data */
-    console.log("Dice have been activated")
-    diceMath1 = Math.round(Math.random() * 6);
-    diceMath2 = Math.round(Math.random() * 6);
+    diceMath1 = Math.round(Math.random() * 5) + 1;
+    diceMath2 = Math.round(Math.random() * 5) + 1;
     diceMove = diceMath1 + diceMath2;
     if (diceMath1 == diceMath2) {
         rollDiceTimeout = setTimeout(rollDice, 0);
     }
     /* Dice Element */
-    diceTimeout = setTimeout(diceLogoChanger, 5);
-    let diceOne = document.getElementById('diceOne');
-    let diceTwo = document.getElementById('diceTwo');
-    diceOne.classList.remove('diceOne', 'diceTwo', 'diceThree', 'diceFour', 'diceFive', 'diceSix', 'diceRare');
-    diceTwo.classList.remove('diceOne', 'diceTwo', 'diceThree', 'diceFour', 'diceFive', 'diceSix', 'diceRare');
-    //Starts the player movement
+    diceTimeout = setTimeout(diceLogoChanger, 10);
+    diceOne = document.getElementById('diceOne');
+    diceTwo = document.getElementById('diceTwo');
+    diceOne.classList.remove('diceOne', 'diceTwo', 'diceThree', 'diceFour', 'diceFive', 'diceSix');
+    diceTwo.classList.remove('diceOne', 'diceTwo', 'diceThree', 'diceFour', 'diceFive', 'diceSix');
     playerTurnMovement();
+    diceLogoChanger();
 
         function diceLogoChanger() {
         switch(diceMath1) {
@@ -62,9 +61,4 @@ function rollDice() {
                 break;
         }
     }
-}
-
-function rare() {
-    diceOne.classList.add('diceRare');
-    diceTwo.classList.add('diceRare');
 }

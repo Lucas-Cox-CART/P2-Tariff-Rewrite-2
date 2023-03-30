@@ -27,6 +27,8 @@ function startGame(errorBoolean) {
         playerCreation();
         currentPlayerBar();
         playerBalanceBar();
+        rentUpdate();
+        hideProp();
     }
 }
 

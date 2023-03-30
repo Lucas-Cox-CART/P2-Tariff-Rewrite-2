@@ -67,6 +67,9 @@ function pP() {  // pP = player property (If the player lands on property)
     console.log('blue waffles');
 }
 
+let chanceTitle = document.getElementById("chanceTitle");
+let chanceDesc = document.getElementById("chanceDesc");
+
 let chanceAffectedPlayer;
 let chanceCard;
 let capitalGainsTimer;
@@ -76,32 +79,38 @@ function performChanceCard() {
     chanceAffectedPlayer = turnIndicator;
     chanceCard = Math.floor(Math.random() * (10 - 1) + 1);
     if (chanceCard == 1) {
-        console.log("Advance to candy land");
+        chanceTitle.innerText = (chanceCardData[0][0]);
+        chanceDesc.innerText = (chanceCardData[0][1]);
         //candy Lane
         cell[players[turnIndicator].position].removeChild(players[turnIndicator].icon); 
         cell[1].appendChild(players[turnIndicator].icon);
         players[chanceAffectedPlayer].position = 1;
     } else if (chanceCard == 2) {
-        console.log("Bail");
+        chanceTitle.innerText = (chanceCardData[1][0]);
+        chanceDesc.innerText = (chanceCardData[1][1]);
         //bail
         // I can not write this yet
     } else if (chanceCard == 3) {
-        console.log("Capital Gains");
+        chanceTitle.innerText = (chanceCardData[2][0]);
+        chanceDesc.innerText = (chanceCardData[2][1]);
         capitalGains = true;
         //Capital Gains
         //WIP
     } else if (chanceCard == 4) {
-        console.log("Big Sneeze");
+        chanceTitle.innerText = (chanceCardData[3][0]);
+        chanceDesc.innerText = (chanceCardData[3][1]);
         //Big Sneeze
         players[chanceAffectedPlayer].position = players[chanceAffectedPlayer].position - 3;
         cell[players[turnIndicator].position].removeChild(players[turnIndicator].icon); 
         cell[players[turnIndicator].position - 3].appendChild(players[turnIndicator].icon);
     } else if (chanceCard == 5) {
-        console.log("Whale Fishing");
+        chanceTitle.innerText = (chanceCardData[4][0]);
+        chanceDesc.innerText = (chanceCardData[4][1]);
         //Whale Fishing
         players[chanceAffectedPlayer].budget = players[chanceAffectedPlayer].budget - 5000;
     } else if (chanceCard == 6) {
-        console.log("General Repairs");
+        chanceTitle.innerText = (chanceCardData[5][0]);
+        chanceDesc.innerText = (chanceCardData[5][1]);
         //General Repairs
         if (players[chanceAffectedPlayer].property['length'] == 0) {
             //Do nothing
@@ -109,15 +118,18 @@ function performChanceCard() {
             players[chanceAffectedPlayer].budget = players[chanceAffectedPlayer].budget - (15000 * players[chanceAffectedPlayer].property['length']); 
         }
     } else if (chanceCard == 7) {
-        console.log("Gospel Of Wealth");
+        chanceTitle.innerText = (chanceCardData[6][0]);
+        chanceDesc.innerText = (chanceCardData[6][1]);
         //Gospel of Wealth
         players[chanceAffectedPlayer].budget = players[chanceAffectedPlayer].budget - 10000
     } else if (chanceCard == 8) {
-        console.log("Tax Evasion");
+        chanceTitle.innerText = (chanceCardData[7][0]);
+        chanceDesc.innerText = (chanceCardData[7][1]);
         //Tax Evasion
         //WIP
     } else if (chanceCard == 9) {
-        console.log("Takin a ride");
+        chanceTitle.innerText = (chanceCardData[8][0]);
+        chanceDesc.innerText = (chanceCardData[8][1]);
         //Takin' a ride
         if (players[chanceAffectedPlayer].position == 8) {
             cell[players[turnIndicator].position].removeChild(players[turnIndicator].icon); 
@@ -136,7 +148,8 @@ function performChanceCard() {
         }
         //Player advances to closest transportation tile
     } else if (chanceCard == 10) {
-        console.log("Bite of 87");
+        chanceTitle.innerText = (chanceCardData[9][0]);
+        chanceDesc.innerText = (chanceCardData[9][1]);
         //WAS THAT THE BITE OF 87????????
         cell[players[turnIndicator].position].removeChild(players[turnIndicator].icon); 
         cell[27].appendChild(players[turnIndicator].icon);
@@ -145,6 +158,9 @@ function performChanceCard() {
     }
 }
 
+let chestTitle = document.getElementById("chestTitle");
+let chestDesc = document.getElementById("chestDesc");
+
 let chestAffectedPlayer;
 let chestCard;
 function performChestCard() {
@@ -152,33 +168,46 @@ function performChestCard() {
     chestAffectedPlayer = turnIndicator;
     chestCard = Math.floor(Math.random() * (10 - 1) + 1);
     if (chestCard == 1) {
+        chestTitle.innerText = (chestCardData[0][0]);
+        chestDesc.innerText = (chestCardData[0][1]);
         //Framing
         //I can not do this at this current time
-        console.log("Framing");
     } else if (chestCard == 2) {
+        chestTitle.innerText = (chestCardData[1][0]);
+        chestDesc.innerText = (chestCardData[1][1]);
         //Empty chest
         //LITTERALLY NOTHING HAPPENS
         console.log("Nothing happens");
     } else if (chestCard == 3) {
+        chestTitle.innerText = (chestCardData[2][0]);
+        chestDesc.innerText = (chestCardData[2][1]);
         //jailbreak
         //I can not do this at this current time 
     } else if (chestCard == 4) {
+        chestTitle.innerText = (chestCardData[3][0]);
+        chestDesc.innerText = (chestCardData[3][1]);
         //Set backs
         cell[players[turnIndicator].position].removeChild(players[turnIndicator].icon); 
         cell[players[turnIndicator].position - 3].appendChild(players[turnIndicator].icon);
         players[chestAffectedPlayer].position = players[chestAffectedPlayer].position - 3;
         console.log("Set backs");
     } else if (chestCard == 5) {
+        chestTitle.innerText = (chestCardData[4][0]);
+        chestDesc.innerText = (chestCardData[4][1]);
         //Inheritance
         players[chestAffectedPlayer].budget = players[chestAffectedPlayer].budget + 15000;
         console.log("Inhertance");
     } else if (chestCard = 6) {
+        chestTitle.innerText = (chestCardData[5][0]);
+        chestDesc.innerText = (chestCardData[5][1]);
         //Big Tower 
         cell[players[turnIndicator].position].removeChild(players[turnIndicator].icon); 
         cell[39].appendChild(players[turnIndicator].icon);
         players[chestAffectedPlayer].position = 39;
         console.log("Big tower");
     } else if (chestCard = 7) {
+        chestTitle.innerText = (chestCardData[6][0]);
+        chestDesc.innerText = (chestCardData[6][1]);
         //Opportunist
         if (players[chestAffectedPlayer].position == 2) {
             cell[players[turnIndicator].position].removeChild(playerIcon);
@@ -196,6 +225,8 @@ function performChestCard() {
             console.log("Something is going wrong with the opportunist card")
         }
     } else if (chestCard = 8) {
+        chestTitle.innerText = (chestCardData[7][0]);
+        chestDesc.innerText = (chestCardData[7][1]);
         //CaughtLackin'
         cell[players[turnIndicator].position].removeChild(players[turnIndicator].icon); 
         cell[10].appendChild(players[turnIndicator].icon);
@@ -203,6 +234,8 @@ function performChestCard() {
         players[chestAffectedPlayer].position = 10;
         console.log("Caught Lackin");
     } else if (chestCard = 9) {
+        chestTitle.innerText = (chestCardData[8][0]);
+        chestDesc.innerText = (chestCardData[8][1]);
         //Leap Year
         cell[players[turnIndicator].position].removeChild(players[turnIndicator].icon); 
         cell[0].appendChild(players[turnIndicator].icon);
@@ -210,6 +243,8 @@ function performChestCard() {
         //Player "should" collect their annual income
         console.log("Leap year");
     } else if (chestCard = 10) {
+        chestTitle.innerText = (chestCardData[9][0]);
+        chestDesc.innerText = (chestCardData[9][1]);
         //Tardis Taxes
         players[chestAffectedPlayer].budget = players[chestAffectedPlayer].budget - 20000;
         console.log("Tardis Taxes");
@@ -217,3 +252,7 @@ function performChestCard() {
         console.log("Chest cards are not working properly");
     }
 } 
+
+// function showDoublePopup() {
+    
+// }
