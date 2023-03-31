@@ -126,13 +126,13 @@ function playerCreation() {
     //Creates the players, and their statistics
     for (let i = 0; i < document.getElementById("PCSelect").value; i++) {
         players.push(player = {
-            budget: startingBudget, //starting budget 
-            property: [], //determines the player's # of owned properties
-            doubles: 0, //Tracks if a player rolled doubles or not
-            jailed: false, //Jailed or free
-            jailCounter: 0, //How many turns a player has been in jail
-            goCounter: 0, //Checks # of times a player has been around GO.
-            position: 0, //Tile player position 
+            budget: startingBudget,
+            property: [], 
+            doubles: 0,
+            jailed: false, 
+            jailCounter: 0, 
+            goCounter: 0, 
+            position: 0, 
             icon: playerIcon[i],
         })
     }
@@ -309,7 +309,7 @@ function currentPlayerBar() {
     currentPlayerBar.innerText = playerName.value + "'s Turn";
 }
 
-function playerBalanceBar() {
+function playerBalanceBar() { //Updates the balance of a player and displays it
     let playerBalanceBar = document.getElementById('playerBalance');
     playerBalanceBar.innerText = "Balance: " + players[turnIndicator].budget;
 }
@@ -1194,81 +1194,107 @@ function buyProperty() {
     switch(players[turnIndicator].position) {
         case 1:
             propertyOfHolder[0].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[0]);
             break;
         case 3:
             propertyOfHolder[1].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[1]);
             break;
         case 5:
             propertyOfHolder[2].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[2]);
             break;
         case 6:
             propertyOfHolder[3].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[3]);
             break;
         case 7:
             propertyOfHolder[4].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[4]);
             break;
         case 9:
             propertyOfHolder[5].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[5]);
             break;
         case 11:
             propertyOfHolder[6].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[6]);
             break;
         case 13:
             propertyOfHolder[7].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[7]);
             break;
         case 14:
             propertyOfHolder[8].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[8]);
             break;
         case 15:
             propertyOfHolder[9].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[9]);
             break;
         case 16:
             propertyOfHolder[10].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[10]);
             break;
         case 18:
             propertyOfHolder[11].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[11]);
             break;
         case 19:
             propertyOfHolder[12].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[12]);
             break;
         case 21:
             propertyOfHolder[13].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[13]);
             break;
         case 23:
             propertyOfHolder[14].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[14]);
             break;
         case 24:
             propertyOfHolder[15].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[15]);
             break;
         case 25:
             propertyOfHolder[16].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[16]);
             break;
         case 26:
             propertyOfHolder[17].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[17]);
             break;
         case 27:
             propertyOfHolder[18].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[18]);
             break;
         case 29:
             propertyOfHolder[19].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[19]);
             break;
         case 31:
             propertyOfHolder[20].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[20]);
             break;
         case 32:
             propertyOfHolder[21].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[21]);
             break;
         case 34:
             propertyOfHolder[22].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[22]);
             break;
         case 35:
             propertyOfHolder[23].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[23]);
             break;
         case 37:
             propertyOfHolder[24].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[24]);
             break;
         case 39:
             propertyOfHolder[25].style.display = "flex";
+            players[turnIndicator].property.push(propertyData[25]);
             break;
     }
 
@@ -1340,6 +1366,8 @@ for (let i = 0; i < 26; i++) {
     houseBuy[i].addEventListener('click', (e) => {
         if (propertyCurrentRent[i].houses <= 4) {
             propertyCurrentRent[i].houses += 1;
+            players[turnIndicator].budget - 10000;
+            playerBalanceBar();
             // add something that removes from player balance
         } else {
             alert("You've reached the maximum number of houses for this property!");
