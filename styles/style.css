@@ -345,7 +345,7 @@ button[onclick="startGame(errorBoolean)"] {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 80%;
+    height: 60%;
     width: 100%;
 }
 
@@ -356,7 +356,7 @@ button[onclick="startGame(errorBoolean)"] {
     width: 100%;
     height: 20%;
     font-family: 'Goblin One', cursive;
-    font-size: 1.4rem;
+    font-size: 1.0rem;
     border-radius: 19px;
 }
 
@@ -366,6 +366,13 @@ button[onclick="startGame(errorBoolean)"] {
     text-align: center;
     font-family: 'Nanum Myeongjo', cursive;
     font-size: 1.3rem;
+}
+
+#ownedProperties span div button {
+    height: 15%;
+    width: 30%;
+    border-radius: 20px;
+    margin: 0 0 15px 0;
 }
 
 #playerBalance {
