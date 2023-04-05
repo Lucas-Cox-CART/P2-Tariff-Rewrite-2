@@ -8,7 +8,6 @@ const mainGame = document.getElementById('mainGame');
 let errorBoolean;
 
 let propertyOfHolder = [];
-let propertyHeadOfHolder = [];
 
 // --- GAMEDATA JS ---
 
@@ -332,13 +331,16 @@ function startGame(errorBoolean) {
         alert('Please enter your username!');
     } else if (tax < 0 || tax == "e") {
         errorBoolean = true;
-        alert('Please enter a valid (positive) integer!');
+        alert('Please enter a valid integer!');
     } else if (startingBudget <= 0 || startingBudget == "e") {
         errorBoolean = true;
-        alert('Please enter a valid (positive) integer!');
+        alert('Please enter a valid integer!');
     } else if (CharacterSelect1.classList.contains('selectedCharacter') == false && CharacterSelect2.classList.contains('selectedCharacter') == false && CharacterSelect3.classList.contains('selectedCharacter') == false) {
-        alert('Please select a character icon!');
         errorBoolean = true;
+        alert('Please select a character icon!');
+    } else if (startingBudget > 10000000) {
+        errorBoolean = true;
+        alert('Maximum starting budget is 10,000,000! Please enter a lower value!');
     } else {
         errorBoolean = false;
         settingsPage.style.display = "none";
@@ -404,6 +406,36 @@ difficultySelector.addEventListener("change", (e) => {
 
 difficulty = 1;
 //Default difficulty
+
+// Setting for Darkmode of Game
+let darkmode = document.getElementById('darkmode');
+let settingsPageHeading = document.getElementById('settingsPageHeading');
+let playerBalance = document.getElementById('playerBalance');
+darkmode.addEventListener('change', (e) => {
+    if (darkmode.checked) {
+        settingsPage.style.backgroundColor = "black";
+        settingsPageHeading.style.color = "white";
+        mainGame.style.backgroundColor = "black";
+        gameBoard.style.backgroundColor = "black";
+        gameBoard.style.color = "white";
+        for (let i = 0; i < 26; i ++) {
+            cell[i].style.border = "2px solid white";
+        }
+        playerBalance.style.color = "white";
+        playerBalance.style.textShadow = "2px 2px 5px black";
+    } else {
+        settingsPage.style.backgroundColor = "white";
+        settingsPageHeading.style.color = "black";
+        mainGame.style.backgroundColor = "white";
+        gameBoard.style.backgroundColor = "white";
+        gameBoard.style.color = "black";
+        for (let i = 0; i < 26; i ++) {
+            cell[i].style.border = "2px solid black";
+        }
+        playerBalance.style.color = "black"
+        playerBalance.style.textShadow = "2px 2px 5px white";
+    }
+});
 
 //Character selecting options
 let CharacterSelect1 = document.getElementById('Cselection1');
@@ -790,7 +822,6 @@ propertyPriceDescriptor[8].innerText = "House Purchase: ";
 propertyPriceDescriptor[9].innerText = "Hotel Purchase: ";
 propertyPriceDescriptor[10].innerText = "Cost: ";
 
-
 pPFather.append(pPDFather, priceFather);
 
 let propertyButtonFather = document.createElement('span');
@@ -812,370 +843,194 @@ propertyAsk.append(propertyName, pPFather, propertyButtonFather);
 function askProperty() {
     mainGame.appendChild(propertyAsk);
 
+    if (darkmode.checked) {
+        propertyAsk.style.backgroundColor = "black";
+        propertyAsk.style.color = "white";
+        propertyName.style.color = "black";
+    }
+
     switch(players[turnIndicator].position) {
         case 1:
             propertyName.innerText = propertyData[0][0];
             propertyName.style.backgroundColor = "brown";
-            propertyPrice[1].innerText = propertyData[0][1];
-            propertyPrice[2].innerText = propertyData[0][2];
-            propertyPrice[3].innerText = propertyData[0][3];
-            propertyPrice[4].innerText = propertyData[0][4];
-            propertyPrice[5].innerText = propertyData[0][5];
-            propertyPrice[6].innerText = propertyData[0][6];
-            propertyPrice[7].innerText = propertyData[0][7];
-            propertyPrice[8].innerText = propertyData[0][8];
-            propertyPrice[9].innerText = propertyData[0][9];
-            propertyPrice[10].innerText = propertyData[0][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[0][i];
+            }
             break;
         case 3:
             propertyName.innerText = propertyData[1][0];
             propertyName.style.backgroundColor = "brown";
-            propertyPrice[1].innerText = propertyData[1][1];
-            propertyPrice[2].innerText = propertyData[1][2];
-            propertyPrice[3].innerText = propertyData[1][3];
-            propertyPrice[4].innerText = propertyData[1][4];
-            propertyPrice[5].innerText = propertyData[1][5];
-            propertyPrice[6].innerText = propertyData[1][6];
-            propertyPrice[7].innerText = propertyData[1][7];
-            propertyPrice[8].innerText = propertyData[1][8];
-            propertyPrice[9].innerText = propertyData[1][9];
-            propertyPrice[10].innerText = propertyData[1][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[1][i];
+            }
             break;
         case 5:
             propertyName.innerText = propertyData[2][0];
             propertyName.style.backgroundColor = "";
-            propertyPrice[1].innerText = propertyData[2][1];
-            propertyPrice[2].innerText = propertyData[2][2];
-            propertyPrice[3].innerText = propertyData[2][3];
-            propertyPrice[4].innerText = propertyData[2][4];
-            propertyPrice[5].innerText = propertyData[2][5];
-            propertyPrice[6].innerText = propertyData[2][6];
-            propertyPrice[7].innerText = propertyData[2][7];
-            propertyPrice[8].innerText = propertyData[2][8];
-            propertyPrice[9].innerText = propertyData[2][9];
-            propertyPrice[10].innerText = propertyData[2][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[2][i];
+            }
             break;
         case 6:
             propertyName.innerText = propertyData[3][0];
             propertyName.style.backgroundColor = "lightblue";
-            propertyPrice[1].innerText = propertyData[3][1];
-            propertyPrice[2].innerText = propertyData[3][2];
-            propertyPrice[3].innerText = propertyData[3][3];
-            propertyPrice[4].innerText = propertyData[3][4];
-            propertyPrice[5].innerText = propertyData[3][5];
-            propertyPrice[6].innerText = propertyData[3][6];
-            propertyPrice[7].innerText = propertyData[3][7];
-            propertyPrice[8].innerText = propertyData[3][8];
-            propertyPrice[9].innerText = propertyData[3][9];
-            propertyPrice[10].innerText = propertyData[3][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[3][i];
+            }
             break;
         case 7:
             propertyName.innerText = propertyData[4][0];
             propertyName.style.backgroundColor = "lightblue";
-            propertyPrice[1].innerText = propertyData[4][1];
-            propertyPrice[2].innerText = propertyData[4][2];
-            propertyPrice[3].innerText = propertyData[4][3];
-            propertyPrice[4].innerText = propertyData[4][4];
-            propertyPrice[5].innerText = propertyData[4][5];
-            propertyPrice[6].innerText = propertyData[4][6];
-            propertyPrice[7].innerText = propertyData[4][7];
-            propertyPrice[8].innerText = propertyData[4][8];
-            propertyPrice[9].innerText = propertyData[4][9];
-            propertyPrice[10].innerText = propertyData[4][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[4][i];
+            }
             break;
         case 9:
             propertyName.innerText = propertyData[5][0];
             propertyName.style.backgroundColor = "lightblue";
-            propertyPrice[1].innerText = propertyData[5][1];
-            propertyPrice[2].innerText = propertyData[5][2];
-            propertyPrice[3].innerText = propertyData[5][3];
-            propertyPrice[4].innerText = propertyData[5][4];
-            propertyPrice[5].innerText = propertyData[5][5];
-            propertyPrice[6].innerText = propertyData[5][6];
-            propertyPrice[7].innerText = propertyData[5][7];
-            propertyPrice[8].innerText = propertyData[5][8];
-            propertyPrice[9].innerText = propertyData[5][9];
-            propertyPrice[10].innerText = propertyData[5][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[5][i];
+            }
             break;
         case 11:
             propertyName.innerText = propertyData[6][0];
             propertyName.style.backgroundColor = "rebeccapurple";
-            propertyPrice[1].innerText = propertyData[6][1];
-            propertyPrice[2].innerText = propertyData[6][2];
-            propertyPrice[3].innerText = propertyData[6][3];
-            propertyPrice[4].innerText = propertyData[6][4];
-            propertyPrice[5].innerText = propertyData[6][5];
-            propertyPrice[6].innerText = propertyData[6][6];
-            propertyPrice[7].innerText = propertyData[6][7];
-            propertyPrice[8].innerText = propertyData[6][8];
-            propertyPrice[9].innerText = propertyData[6][9];
-            propertyPrice[10].innerText = propertyData[6][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[6][i];
+            }
             break;
         case 13:
             propertyName.innerText = propertyData[7][0];
             propertyName.style.backgroundColor = "rebeccapurple";
-            propertyPrice[1].innerText = propertyData[7][1];
-            propertyPrice[2].innerText = propertyData[7][2];
-            propertyPrice[3].innerText = propertyData[7][3];
-            propertyPrice[4].innerText = propertyData[7][4];
-            propertyPrice[5].innerText = propertyData[7][5];
-            propertyPrice[6].innerText = propertyData[7][6];
-            propertyPrice[7].innerText = propertyData[7][7];
-            propertyPrice[8].innerText = propertyData[7][8];
-            propertyPrice[9].innerText = propertyData[7][9];
-            propertyPrice[10].innerText = propertyData[7][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[7][i];
+            }
             break;
         case 14:
             propertyName.innerText = propertyData[8][0];
             propertyName.style.backgroundColor = "rebeccapurple";
-            propertyPrice[1].innerText = propertyData[8][1];
-            propertyPrice[2].innerText = propertyData[8][2];
-            propertyPrice[3].innerText = propertyData[8][3];
-            propertyPrice[4].innerText = propertyData[8][4];
-            propertyPrice[5].innerText = propertyData[8][5];
-            propertyPrice[6].innerText = propertyData[8][6];
-            propertyPrice[7].innerText = propertyData[8][7];
-            propertyPrice[8].innerText = propertyData[8][8];
-            propertyPrice[9].innerText = propertyData[8][9];
-            propertyPrice[10].innerText = propertyData[8][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[8][i];
+            }
             break;
         case 15:
             propertyName.innerText = propertyData[9][0];
             propertyName.style.backgroundColor = "";
-            propertyPrice[1].innerText = propertyData[9][1];
-            propertyPrice[2].innerText = propertyData[9][2];
-            propertyPrice[3].innerText = propertyData[9][3];
-            propertyPrice[4].innerText = propertyData[9][4];
-            propertyPrice[5].innerText = propertyData[9][5];
-            propertyPrice[6].innerText = propertyData[9][6];
-            propertyPrice[7].innerText = propertyData[9][7];
-            propertyPrice[8].innerText = propertyData[9][8];
-            propertyPrice[9].innerText = propertyData[9][9];
-            propertyPrice[10].innerText = propertyData[9][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[9][i];
+            }
             break;
         case 16:
             propertyName.innerText = propertyData[10][0];
             propertyName.style.backgroundColor = "orange";
-            propertyPrice[1].innerText = propertyData[10][1];
-            propertyPrice[2].innerText = propertyData[10][2];
-            propertyPrice[3].innerText = propertyData[10][3];
-            propertyPrice[4].innerText = propertyData[10][4];
-            propertyPrice[5].innerText = propertyData[10][5];
-            propertyPrice[6].innerText = propertyData[10][6];
-            propertyPrice[7].innerText = propertyData[10][7];
-            propertyPrice[8].innerText = propertyData[10][8];
-            propertyPrice[9].innerText = propertyData[10][9];
-            propertyPrice[10].innerText = propertyData[10][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[10][i];
+            }
             break;
         case 18:
             propertyName.innerText = propertyData[11][0];
             propertyName.style.backgroundColor = "orange";
-            propertyPrice[1].innerText = propertyData[11][1];
-            propertyPrice[2].innerText = propertyData[11][2];
-            propertyPrice[3].innerText = propertyData[11][3];
-            propertyPrice[4].innerText = propertyData[11][4];
-            propertyPrice[5].innerText = propertyData[11][5];
-            propertyPrice[6].innerText = propertyData[11][6];
-            propertyPrice[7].innerText = propertyData[11][7];
-            propertyPrice[8].innerText = propertyData[11][8];
-            propertyPrice[9].innerText = propertyData[11][9];
-            propertyPrice[10].innerText = propertyData[11][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[11][i];
+            }
             break;
         case 19:
             propertyName.innerText = propertyData[12][0];
             propertyName.style.backgroundColor = "orange";
-            propertyPrice[1].innerText = propertyData[12][1];
-            propertyPrice[2].innerText = propertyData[12][2];
-            propertyPrice[3].innerText = propertyData[12][3];
-            propertyPrice[4].innerText = propertyData[12][4];
-            propertyPrice[5].innerText = propertyData[12][5];
-            propertyPrice[6].innerText = propertyData[12][6];
-            propertyPrice[7].innerText = propertyData[12][7];
-            propertyPrice[8].innerText = propertyData[12][8];
-            propertyPrice[9].innerText = propertyData[12][9];
-            propertyPrice[10].innerText = propertyData[12][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[12][i];
+            }
             break;
         case 21:
             propertyName.innerText = propertyData[13][0];
             propertyName.style.backgroundColor = "red";
-            propertyPrice[1].innerText = propertyData[13][1];
-            propertyPrice[2].innerText = propertyData[13][2];
-            propertyPrice[3].innerText = propertyData[13][3];
-            propertyPrice[4].innerText = propertyData[13][4];
-            propertyPrice[5].innerText = propertyData[13][5];
-            propertyPrice[6].innerText = propertyData[13][6];
-            propertyPrice[7].innerText = propertyData[13][7];
-            propertyPrice[8].innerText = propertyData[13][8];
-            propertyPrice[9].innerText = propertyData[13][9];
-            propertyPrice[10].innerText = propertyData[13][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[13][i];
+            }
             break;
         case 23:
             propertyName.innerText = propertyData[14][0];
             propertyName.style.backgroundColor = "red";
-            propertyPrice[1].innerText = propertyData[14][1];
-            propertyPrice[2].innerText = propertyData[14][2];
-            propertyPrice[3].innerText = propertyData[14][3];
-            propertyPrice[4].innerText = propertyData[14][4];
-            propertyPrice[5].innerText = propertyData[14][5];
-            propertyPrice[6].innerText = propertyData[14][6];
-            propertyPrice[7].innerText = propertyData[14][7];
-            propertyPrice[8].innerText = propertyData[14][8];
-            propertyPrice[9].innerText = propertyData[14][9];
-            propertyPrice[10].innerText = propertyData[14][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[14][i];
+            }
             break;
         case 24:
             propertyName.innerText = propertyData[15][0];
             propertyName.style.backgroundColor = "red";
-            propertyPrice[1].innerText = propertyData[15][1];
-            propertyPrice[2].innerText = propertyData[15][2];
-            propertyPrice[3].innerText = propertyData[15][3];
-            propertyPrice[4].innerText = propertyData[15][4];
-            propertyPrice[5].innerText = propertyData[15][5];
-            propertyPrice[6].innerText = propertyData[15][6];
-            propertyPrice[7].innerText = propertyData[15][7];
-            propertyPrice[8].innerText = propertyData[15][8];
-            propertyPrice[9].innerText = propertyData[15][9];
-            propertyPrice[10].innerText = propertyData[15][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[15][i];
+            }
             break;
         case 25:
             propertyName.innerText = propertyData[16][0];
             propertyName.style.backgroundColor = "";
-            propertyPrice[1].innerText = propertyData[16][1];
-            propertyPrice[2].innerText = propertyData[16][2];
-            propertyPrice[3].innerText = propertyData[16][3];
-            propertyPrice[4].innerText = propertyData[16][4];
-            propertyPrice[5].innerText = propertyData[16][5];
-            propertyPrice[6].innerText = propertyData[16][6];
-            propertyPrice[7].innerText = propertyData[16][7];
-            propertyPrice[8].innerText = propertyData[16][8];
-            propertyPrice[9].innerText = propertyData[16][9];
-            propertyPrice[10].innerText = propertyData[16][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[16][i];
+            }
             break;
         case 26:
             propertyName.innerText = propertyData[17][0];
             propertyName.style.backgroundColor = "yellow";
-            propertyPrice[1].innerText = propertyData[17][1];
-            propertyPrice[2].innerText = propertyData[17][2];
-            propertyPrice[3].innerText = propertyData[17][3];
-            propertyPrice[4].innerText = propertyData[17][4];
-            propertyPrice[5].innerText = propertyData[17][5];
-            propertyPrice[6].innerText = propertyData[17][6];
-            propertyPrice[7].innerText = propertyData[17][7];
-            propertyPrice[8].innerText = propertyData[17][8];
-            propertyPrice[9].innerText = propertyData[17][9];
-            propertyPrice[10].innerText = propertyData[17][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[17][i];
+            }
             break;
         case 27:
             propertyName.innerText = propertyData[18][0];
             propertyName.style.backgroundColor = "yellow";
-            propertyPrice[1].innerText = propertyData[18][1];
-            propertyPrice[2].innerText = propertyData[18][2];
-            propertyPrice[3].innerText = propertyData[18][3];
-            propertyPrice[4].innerText = propertyData[18][4];
-            propertyPrice[5].innerText = propertyData[18][5];
-            propertyPrice[6].innerText = propertyData[18][6];
-            propertyPrice[7].innerText = propertyData[18][7];
-            propertyPrice[8].innerText = propertyData[18][8];
-            propertyPrice[9].innerText = propertyData[18][9];
-            propertyPrice[10].innerText = propertyData[18][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[18][i];
+            }
             break;
         case 29:
             propertyName.innerText = propertyData[19][0];
             propertyName.style.backgroundColor = "yellow";
-            propertyPrice[1].innerText = propertyData[19][1];
-            propertyPrice[2].innerText = propertyData[19][2];
-            propertyPrice[3].innerText = propertyData[19][3];
-            propertyPrice[4].innerText = propertyData[19][4];
-            propertyPrice[5].innerText = propertyData[19][5];
-            propertyPrice[6].innerText = propertyData[19][6];
-            propertyPrice[7].innerText = propertyData[19][7];
-            propertyPrice[8].innerText = propertyData[19][8];
-            propertyPrice[9].innerText = propertyData[19][9];
-            propertyPrice[10].innerText = propertyData[19][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[19][i];
+            }
             break;
         case 31:
             propertyName.innerText = propertyData[20][0];
             propertyName.style.backgroundColor = "greenyellow";
-            propertyPrice[1].innerText = propertyData[20][1];
-            propertyPrice[2].innerText = propertyData[20][2];
-            propertyPrice[3].innerText = propertyData[20][3];
-            propertyPrice[4].innerText = propertyData[20][4];
-            propertyPrice[5].innerText = propertyData[20][5];
-            propertyPrice[6].innerText = propertyData[20][6];
-            propertyPrice[7].innerText = propertyData[20][7];
-            propertyPrice[8].innerText = propertyData[20][8];
-            propertyPrice[9].innerText = propertyData[20][9];
-            propertyPrice[10].innerText = propertyData[20][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[20][i];
+            }
             break;
         case 32:
             propertyName.innerText = propertyData[21][0];
             propertyName.style.backgroundColor = "greenyellow";
-            propertyPrice[1].innerText = propertyData[21][1];
-            propertyPrice[2].innerText = propertyData[21][2];
-            propertyPrice[3].innerText = propertyData[21][3];
-            propertyPrice[4].innerText = propertyData[21][4];
-            propertyPrice[5].innerText = propertyData[21][5];
-            propertyPrice[6].innerText = propertyData[21][6];
-            propertyPrice[7].innerText = propertyData[21][7];
-            propertyPrice[8].innerText = propertyData[21][8];
-            propertyPrice[9].innerText = propertyData[21][9];
-            propertyPrice[10].innerText = propertyData[21][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[21][i];
+            }
             break;
         case 34:
             propertyName.innerText = propertyData[22][0];
             propertyName.style.backgroundColor = "greenyellow";
-            propertyPrice[1].innerText = propertyData[22][1];
-            propertyPrice[2].innerText = propertyData[22][2];
-            propertyPrice[3].innerText = propertyData[22][3];
-            propertyPrice[4].innerText = propertyData[22][4];
-            propertyPrice[5].innerText = propertyData[22][5];
-            propertyPrice[6].innerText = propertyData[22][6];
-            propertyPrice[7].innerText = propertyData[22][7];
-            propertyPrice[8].innerText = propertyData[22][8];
-            propertyPrice[9].innerText = propertyData[22][9];
-            propertyPrice[10].innerText = propertyData[22][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[22][i];
+            }
             break;
         case 35:
             propertyName.innerText = propertyData[23][0];
             propertyName.style.backgroundColor = "";
-            propertyPrice[1].innerText = propertyData[23][1];
-            propertyPrice[2].innerText = propertyData[23][2];
-            propertyPrice[3].innerText = propertyData[23][3];
-            propertyPrice[4].innerText = propertyData[23][4];
-            propertyPrice[5].innerText = propertyData[23][5];
-            propertyPrice[6].innerText = propertyData[23][6];
-            propertyPrice[7].innerText = propertyData[23][7];
-            propertyPrice[8].innerText = propertyData[23][8];
-            propertyPrice[9].innerText = propertyData[23][9];
-            propertyPrice[10].innerText = propertyData[23][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[23][i];
+            }
             break;
         case 37:
             propertyName.innerText = propertyData[24][0];
             propertyName.style.backgroundColor = "cornflowerblue";
-            propertyPrice[1].innerText = propertyData[24][1];
-            propertyPrice[2].innerText = propertyData[24][2];
-            propertyPrice[3].innerText = propertyData[24][3];
-            propertyPrice[4].innerText = propertyData[24][4];
-            propertyPrice[5].innerText = propertyData[24][5];
-            propertyPrice[6].innerText = propertyData[24][6];
-            propertyPrice[7].innerText = propertyData[24][7];
-            propertyPrice[8].innerText = propertyData[24][8];
-            propertyPrice[9].innerText = propertyData[24][9];
-            propertyPrice[10].innerText = propertyData[24][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[24][i];
+            }
             break;
         case 39:
             propertyName.innerText = propertyData[25][0];
             propertyName.style.backgroundColor = "cornflowerblue";
-            propertyPrice[1].innerText = propertyData[25][1];
-            propertyPrice[2].innerText = propertyData[25][2];
-            propertyPrice[3].innerText = propertyData[25][3];
-            propertyPrice[4].innerText = propertyData[25][4];
-            propertyPrice[5].innerText = propertyData[25][5];
-            propertyPrice[6].innerText = propertyData[25][6];
-            propertyPrice[7].innerText = propertyData[25][7];
-            propertyPrice[8].innerText = propertyData[25][8];
-            propertyPrice[9].innerText = propertyData[25][9];
-            propertyPrice[10].innerText = propertyData[25][10];
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = propertyData[25][i];
+            }
             break;
     }
 }
@@ -1183,7 +1038,6 @@ function askProperty() {
 function hideProp() {
     for (let i = 0; i < 26; i++) {
         propertyOfHolder[i] = document.getElementById(`property${[i]}`);
-        propertyHeadOfHolder[i] = document.getElementById(`propertyHead${[i]}`);
         propertyOfHolder[i].style.display = "none";
     }
 }
@@ -1191,139 +1045,146 @@ function hideProp() {
 function buyProperty() {
     mainGame.removeChild(propertyAsk);
 
-    switch(players[turnIndicator].position) {
-        case 1:
-            propertyOfHolder[0].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[0]);
-            break;
-        case 3:
-            propertyOfHolder[1].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[1]);
-            break;
-        case 5:
-            propertyOfHolder[2].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[2]);
-            break;
-        case 6:
-            propertyOfHolder[3].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[3]);
-            break;
-        case 7:
-            propertyOfHolder[4].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[4]);
-            break;
-        case 9:
-            propertyOfHolder[5].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[5]);
-            break;
-        case 11:
-            propertyOfHolder[6].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[6]);
-            break;
-        case 13:
-            propertyOfHolder[7].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[7]);
-            break;
-        case 14:
-            propertyOfHolder[8].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[8]);
-            break;
-        case 15:
-            propertyOfHolder[9].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[9]);
-            break;
-        case 16:
-            propertyOfHolder[10].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[10]);
-            break;
-        case 18:
-            propertyOfHolder[11].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[11]);
-            break;
-        case 19:
-            propertyOfHolder[12].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[12]);
-            break;
-        case 21:
-            propertyOfHolder[13].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[13]);
-            break;
-        case 23:
-            propertyOfHolder[14].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[14]);
-            break;
-        case 24:
-            propertyOfHolder[15].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[15]);
-            break;
-        case 25:
-            propertyOfHolder[16].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[16]);
-            break;
-        case 26:
-            propertyOfHolder[17].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[17]);
-            break;
-        case 27:
-            propertyOfHolder[18].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[18]);
-            break;
-        case 29:
-            propertyOfHolder[19].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[19]);
-            break;
-        case 31:
-            propertyOfHolder[20].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[20]);
-            break;
-        case 32:
-            propertyOfHolder[21].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[21]);
-            break;
-        case 34:
-            propertyOfHolder[22].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[22]);
-            break;
-        case 35:
-            propertyOfHolder[23].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[23]);
-            break;
-        case 37:
-            propertyOfHolder[24].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[24]);
-            break;
-        case 39:
-            propertyOfHolder[25].style.display = "flex";
-            players[turnIndicator].property.push(propertyData[25]);
-            break;
+    if (players[turnIndicator].budget > (+propertyData[players[turnIndicator].position][10])) {
+        switch(players[turnIndicator].position) {
+            case 1:
+                propertyOfHolder[0].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[0]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[0][10];
+                break;
+            case 3:
+                propertyOfHolder[1].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[1]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[1][10];
+                break;
+            case 5:
+                propertyOfHolder[2].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[2]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[2][10];
+                break;
+            case 6:
+                propertyOfHolder[3].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[3]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[3][10];
+                break;
+            case 7:
+                propertyOfHolder[4].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[4]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[4][10];
+                break;
+            case 9:
+                propertyOfHolder[5].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[5]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[5][10];
+                break;
+            case 11:
+                propertyOfHolder[6].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[6]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[6][10];
+                break;
+            case 13:
+                propertyOfHolder[7].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[7]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[7][10];
+                break;
+            case 14:
+                propertyOfHolder[8].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[8]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[8][10];
+                break;
+            case 15:
+                propertyOfHolder[9].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[9]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[9][10];
+                break;
+            case 16:
+                propertyOfHolder[10].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[10]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[10][10];
+                break;
+            case 18:
+                propertyOfHolder[11].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[11]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[11][10];
+                break;
+            case 19:
+                propertyOfHolder[12].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[12]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[12][10];
+                break;
+            case 21:
+                propertyOfHolder[13].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[13]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[13][10];
+                break;
+            case 23:
+                propertyOfHolder[14].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[14]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[14][10];
+                break;
+            case 24:
+                propertyOfHolder[15].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[15]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[15][10];
+                break;
+            case 25:
+                propertyOfHolder[16].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[16]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[16][10];
+                break;
+            case 26:
+                propertyOfHolder[17].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[17]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[17][10];
+                break;
+            case 27:
+                propertyOfHolder[18].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[18]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[18][10];
+                break;
+            case 29:
+                propertyOfHolder[19].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[19]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[19][10];
+                break;
+            case 31:
+                propertyOfHolder[20].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[20]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[20][10];
+                break;
+            case 32:
+                propertyOfHolder[21].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[21]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[21][10];
+                break;
+            case 34:
+                propertyOfHolder[22].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[22]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[22][10];
+                break;
+            case 35:
+                propertyOfHolder[23].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[23]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[23][10];
+                break;
+            case 37:
+                propertyOfHolder[24].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[24]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[24][10];
+                break;
+            case 39:
+                propertyOfHolder[25].style.display = "flex";
+                players[turnIndicator].property.push(propertyData[25]);
+                players[turnIndicator].budget = players[turnIndicator].budget - propertyData[25][10];
+                break;
+        }
+    } else if (players[turnIndicator].budget < (+propertyData[players[turnIndicator].position][10])) {
+        alert('Balance too low to purchase this property!');
+    } else {
+        alert('Developer error');
     }
 
-    propertyHeadOfHolder[0].style.backgroundColor = "brown";
-    propertyHeadOfHolder[1].style.backgroundColor = "brown";
-    propertyHeadOfHolder[2].style.backgroundColor = "";
-    propertyHeadOfHolder[3].style.backgroundColor = "lightblue";
-    propertyHeadOfHolder[4].style.backgroundColor = "lightblue";
-    propertyHeadOfHolder[5].style.backgroundColor = "lightblue";
-    propertyHeadOfHolder[6].style.backgroundColor = "rebeccapurple";
-    propertyHeadOfHolder[7].style.backgroundColor = "rebeccapurple";
-    propertyHeadOfHolder[8].style.backgroundColor = "rebeccapurple";
-    propertyHeadOfHolder[9].style.backgroundColor = "";
-    propertyHeadOfHolder[10].style.backgroundColor = "orange";
-    propertyHeadOfHolder[11].style.backgroundColor = "orange";
-    propertyHeadOfHolder[12].style.backgroundColor = "orange";
-    propertyHeadOfHolder[13].style.backgroundColor = "red";
-    propertyHeadOfHolder[14].style.backgroundColor = "red";
-    propertyHeadOfHolder[15].style.backgroundColor = "red";
-    propertyHeadOfHolder[16].style.backgroundColor = "";
-    propertyHeadOfHolder[17].style.backgroundColor = "yellow";
-    propertyHeadOfHolder[18].style.backgroundColor = "yellow";
-    propertyHeadOfHolder[19].style.backgroundColor = "yellow";
-    propertyHeadOfHolder[20].style.backgroundColor = "greenyellow";
-    propertyHeadOfHolder[21].style.backgroundColor = "greenyellow";
-    propertyHeadOfHolder[22].style.backgroundColor = "greenyellow";
-    propertyHeadOfHolder[23].style.backgroundColor = "";
-    propertyHeadOfHolder[24].style.backgroundColor = "cornflowerblue";
-    propertyHeadOfHolder[25].style.backgroundColor = "cornflowerblue";
+    playerBalanceBar();
 }
 
 function waiveProperty() {
@@ -1337,26 +1198,7 @@ function rentMake() {
             root: document.getElementById(`propertyCurrentRent${[i]}`),
             houses: 0
         };
-        switch(propertyCurrentRent[i].houses) {
-            case 0:
-                propertyCurrentRent[i].root.innerText = propertyData[i][1];
-                break;
-            case 1:
-                propertyCurrentRent[i].root.innerText = propertyData[i][2];
-                break;
-            case 2:
-                propertyCurrentRent[i].root.innerText = propertyData[i][3];
-                break;
-            case 3:
-                propertyCurrentRent[i].root.innerText = propertyData[i][4];
-                break;
-            case 4:
-                propertyCurrentRent[i].root.innerText = propertyData[i][5];
-                break;
-            case 5:
-                propertyCurrentRent[i].root.innerText = propertyData[i][6];
-                break;
-        }
+        propertyCurrentRent[i].root.innerText = propertyData[i][1];
     }
 }
 
@@ -1364,14 +1206,41 @@ let houseBuy = [];
 for (let i = 0; i < 26; i++) {
     houseBuy[i] = document.getElementById(`houseBuy${[i]}`);
     houseBuy[i].addEventListener('click', (e) => {
-        if (propertyCurrentRent[i].houses <= 4) {
-            propertyCurrentRent[i].houses += 1;
-            players[turnIndicator].budget - 10000;
-            playerBalanceBar();
-            // add something that removes from player balance
-        } else {
+
+        if (players[turnIndicator].budget < (+propertyData[players[turnIndicator].position][8])) {
+            alert("You can't afford this!");
+        } else if (players[turnIndicator].budget < (+propertyData[players[turnIndicator].position][9])) {
+            alert("You can't afford this!");
+        } else if (propertyCurrentRent[i].houses == 5) {
             alert("You've reached the maximum number of houses for this property!");
+        } else if (propertyCurrentRent[i].houses == 4) {
+            propertyCurrentRent[i].houses += 1;
+            players[turnIndicator].budget = players[turnIndicator].budget - (+propertyData[players[turnIndicator].position][9]);
+            playerBalanceBar();
+        } else if (propertyCurrentRent[i].houses < 4) {
+            propertyCurrentRent[i].houses += 1;
+            players[turnIndicator].budget = players[turnIndicator].budget - (+propertyData[players[turnIndicator].position][8]);
+            playerBalanceBar();
+        } else {
+            alert("youre retarded");
         }
+
+        // if (players[turnIndicator].budget > (+propertyData[players[turnIndicator].position][8])) {
+        //     if (propertyCurrentRent[i].houses < 4) {
+        //         propertyCurrentRent[i].houses += 1;
+        //         players[turnIndicator].budget = players[turnIndicator].budget - (+propertyData[players[turnIndicator].position][8]);
+        //         playerBalanceBar();
+        //     } else if (propertyCurrentRent[i].houses == 4) {
+        //         propertyCurrentRent[i].houses += 1;
+        //         players[turnIndicator].budget = players[turnIndicator].budget - (+propertyData[players[turnIndicator].position][9]);
+        //         playerBalanceBar();
+        //     } else if (propertyCurrentRent[i].houses == 5) {
+        //         alert("You've reached the maximum number of houses for this property!");
+        //     }
+        // } else {
+        //     alert('Youre Poor!');
+        // }
+
         switch(propertyCurrentRent[i].houses) {
             case 0:
                 propertyCurrentRent[i].root.innerText = propertyData[i][1];
@@ -1406,6 +1275,7 @@ let gameBoard = document.getElementById('gameBoard');
 let nominee1;
 let nominee2;
 let timer;
+
 function election() {
     let electionFather = document.createElement('article');
     electionFather.classList.add('electionFather');
@@ -1435,7 +1305,7 @@ function election() {
     nominee2Description.classList.add('nomineeDescription');
     descriptionFather.appendChild(nominee2Description);
 
-let selectedNominee;
+    let selectedNominee;
 
     nominee1Description.addEventListener('click', (e) => {
         confirmVoteButton.innerText = "Confirm vote for " + nominee1.className.toUpperCase() + "?";
