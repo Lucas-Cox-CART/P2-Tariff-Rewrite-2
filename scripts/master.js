@@ -332,7 +332,7 @@ function startGame(errorBoolean) {
     } else if (tax < 0 || tax == "e") {
         errorBoolean = true;
         alert('Please enter a valid integer!');
-    } else if (startingBudget <= 0 || startingBudget == "e") {
+    } else if (startingBudget <= 0 || startingBudget == +"e") {
         errorBoolean = true;
         alert('Please enter a valid integer!');
     } else if (CharacterSelect1.classList.contains('selectedCharacter') == false && CharacterSelect2.classList.contains('selectedCharacter') == false && CharacterSelect3.classList.contains('selectedCharacter') == false) {
@@ -363,46 +363,60 @@ playerName.addEventListener('change', (e) => {
 let startingBudget;
 //Default value for the budgets of players
 startingBudget = document.addEventListener("change", (e) => {
-    startingBudget = document.getElementById("initialBudget").value;
+    startingBudget = initialBudget.value;
     startingBudget = Math.floor(startingBudget);
 });
 startingBudget = 600000;
 
 let tax;
+let initialTax = document.getElementById('initialTax');
+
 //Default value for tax
 tax = document.addEventListener("change", (e) => {
-    tax = document.getElementById("initialTax").value;
+    tax = initialTax.value;
     tax = Math.floor(tax) / 100;
 });
 tax = 0.09;
 
 //Difficulty settings: 
 let difficultySelector = document.getElementById('selectDifficulty');
+let initialBudget = document.getElementById('initialBudget');
+
 difficultySelector.addEventListener("change", (e) => {
     let difficulty = difficultySelector.value;
     // difficulty = Math.floor(difficulty);
     if (difficulty == 1) {
-        document.getElementById("initialBudget").value = 600000;
+        initialBudget.value = 600000;
         startingBudget = 600000;
-        document.getElementById("initialTax").value = 9;
+        initialTax.value = 9;
         tax = 0.09;
     } else if (difficulty == 2) {
-        document.getElementById("initialBudget").value = 400000;
+        initialBudget.value = 400000;
         startingBudget = 400000;
-        document.getElementById("initialTax").value = 12;
+        initialTax.value = 12;
         tax = 0.12;
     } else if (difficulty == 3) {
-        document.getElementById("initialBudget").value = 200000;
+        initialBudget.value = 200000;
         startingBudget = 200000;
-        document.getElementById("initialTax").value = 16;
+        initialTax.value = 16;
         tax = 0.16;
     } else if (difficulty == 4) {
-        document.getElementById("initialBudget").value = "";
+        initialBudget.value = "";
         startingBudget = "";
-        document.getElementById("initialTax").value = "";
+        initialTax.value = "";
         tax = "";
     }
 });
+
+initialBudget.addEventListener('keydown', (e) => {
+    difficultySelector.value = 4;
+});
+
+initialTax.addEventListener('keydown', (e) => {
+    difficultySelector.value = 4;
+})
+
+
 
 difficulty = 1;
 //Default difficulty
@@ -1224,22 +1238,6 @@ for (let i = 0; i < 26; i++) {
         } else {
             alert("youre retarded");
         }
-
-        // if (players[turnIndicator].budget > (+propertyData[players[turnIndicator].position][8])) {
-        //     if (propertyCurrentRent[i].houses < 4) {
-        //         propertyCurrentRent[i].houses += 1;
-        //         players[turnIndicator].budget = players[turnIndicator].budget - (+propertyData[players[turnIndicator].position][8]);
-        //         playerBalanceBar();
-        //     } else if (propertyCurrentRent[i].houses == 4) {
-        //         propertyCurrentRent[i].houses += 1;
-        //         players[turnIndicator].budget = players[turnIndicator].budget - (+propertyData[players[turnIndicator].position][9]);
-        //         playerBalanceBar();
-        //     } else if (propertyCurrentRent[i].houses == 5) {
-        //         alert("You've reached the maximum number of houses for this property!");
-        //     }
-        // } else {
-        //     alert('Youre Poor!');
-        // }
 
         switch(propertyCurrentRent[i].houses) {
             case 0:

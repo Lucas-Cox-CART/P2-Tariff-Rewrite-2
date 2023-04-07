@@ -315,17 +315,19 @@ button[onclick="startGame(errorBoolean)"] {
     overflow-x: hidden;
 }
 
-#ownedProperties span {
+#propertyHolder {
     width: 100%;
     height: 100%;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
     align-items: center;
     background-color: transparent;
 }
 
 .property {
     height: 200px;
-    width: 100%;
+    width: 97%;
     background-color: white;
     border: 2px solid black;
     border-radius: 20px;
