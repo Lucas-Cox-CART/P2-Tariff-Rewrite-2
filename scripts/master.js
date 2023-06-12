@@ -324,17 +324,17 @@ function gotoSettings() {
     settingsPage.style.display = "flex";
 }
 
-//Checks for missing values/errors in Settings Page before preceding to Game
+// Checks for missing values/errors in Settings Page before preceding to Game
 function startGame(errorBoolean) {
     if (playerName.value == "") {
         errorBoolean = true;
         alert('Please enter your username!');
-    } else if (tax < 0 || tax == "e") {
+    } else if (tax < 0 || tax == "e" || tax > 50) {
         errorBoolean = true;
-        alert('Please enter a valid integer!');
+        alert('Please enter a valid integer in Initial Tax field!');
     } else if (startingBudget <= 0 || startingBudget == +"e") {
         errorBoolean = true;
-        alert('Please enter a valid integer!');
+        alert('Please enter a valid integer in Starting Budget field!');
     } else if (CharacterSelect1.classList.contains('selectedCharacter') == false && CharacterSelect2.classList.contains('selectedCharacter') == false && CharacterSelect3.classList.contains('selectedCharacter') == false) {
         errorBoolean = true;
         alert('Please select a character icon!');
@@ -1220,7 +1220,6 @@ let houseBuy = [];
 for (let i = 0; i < 26; i++) {
     houseBuy[i] = document.getElementById(`houseBuy${[i]}`);
     houseBuy[i].addEventListener('click', (e) => {
-
         if (players[turnIndicator].budget < (+propertyData[players[turnIndicator].position][8])) {
             alert("You can't afford this!");
         } else if (players[turnIndicator].budget < (+propertyData[players[turnIndicator].position][9])) {
