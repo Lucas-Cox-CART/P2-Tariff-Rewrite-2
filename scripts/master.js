@@ -1,3 +1,5 @@
+let hosting = window.localStorage.getItem('Hosting') == "true";
+
 // --- INDEX JS ---
 
 const header = document.getElementById('header');
@@ -50,7 +52,7 @@ const propertyData = [
     ['Mary Allen Solar Field', 6500, 32500, 97500, 225000, 275000, 318800, 37500, 50000, 200000, 75000],
     // ['Chest'],
     ['Robert Atomic', 7000, 37500, 112500, 250000, 300000, 350000, 40000, 50000, 200000, 80000],
-    ['American Ambulance', , 6250, 12500, 25000, 50000,],
+    ['American Ambulance', 6250, 12500, 25000, 50000,],
     // ['Chance'],
     ['Chump Tower', 8700, 43800, 125000, 275000, 325000, 375000, 43700, 50000, 200000, 87500],
     // ['Luxury Tax'],
@@ -1046,6 +1048,13 @@ function askProperty() {
                 propertyPrice[i].innerText = propertyData[25][i];
             }
             break;
+        case any:
+            propertyName.innerText = "NoData";
+            propertyName.style.backgroundColor = "black";
+            for (let i = 1; i < 11; i++) {
+                propertyPrice[i].innerText = "NoData";
+            }
+            break;
     }
 }
 
@@ -1191,11 +1200,14 @@ function buyProperty() {
                 players[turnIndicator].property.push(propertyData[25]);
                 players[turnIndicator].budget = players[turnIndicator].budget - propertyData[25][10];
                 break;
+            case any:
+                alert('any other case');
+                break;
         }
     } else if (players[turnIndicator].budget < (+propertyData[players[turnIndicator].position][10])) {
         alert('Balance too low to purchase this property!');
     } else {
-        alert('Developer error');
+        console.log('not on a buyable tile');
     }
 
     playerBalanceBar();
@@ -1235,7 +1247,7 @@ for (let i = 0; i < 26; i++) {
             players[turnIndicator].budget = players[turnIndicator].budget - (+propertyData[players[turnIndicator].position][8]);
             playerBalanceBar();
         } else {
-            alert("youre retarded");
+            alert("skill issue");
         }
 
         switch(propertyCurrentRent[i].houses) {
